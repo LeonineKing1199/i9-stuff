@@ -4,7 +4,7 @@
   const Section1Info = (i9Form) => ({
     view() {
       return m('div', { class: 'measure' }, [
-        m('h4', 'Employee Info from Section I'),
+        m('h2', 'Employee Info from Section I'),
 
         // last name
         m('label', { for: 'last-name', class: 'f6 b db mb2' }, 'Last Name'),
@@ -120,7 +120,7 @@
 
       return (
         m('div', { class: 'measure' }, [
-          m('h4', 'Identity and Employment Authorization'),
+          m('h2', 'Identity and Employment Authorization'),
           m('p', 'The employee presented me with:'),
           m('select', { onchange: m.withAttr('value', onchange) }, [
             m('option', { selected: true, disabled: true }, 'Please select a document'),
@@ -162,23 +162,118 @@
     }
   });
 
-  const makeTextInput = () => {};
+  const makeTextInput = ({ id, labelText, initialValue , obj, key }) => {
+    return [
+      m('label', { for: id, class: 'f6 b db mb2' }, labelText),
+      m('input', {
+        onchange: m.withAttr('value', (val) => { obj[key] = val; }),
+        id,
+        value: initialValue,
+        type: 'text',
+        class: 'input-reset ba b--black-20 pa2 mb2 db w-100'
+      })
+    ]
+  };
 
-  // This needs a better name but this is the section of section 2 that collects things like
-  // today's date,
-  const Misc = (i9Form) => ({
+
+
+
+  const EmployerInfo = (i9Form) => ({
     view() {
       return m('div', { class: 'measure' }, [
-        m('h4', 'Employer Info'),
+        m('h2', 'Employer Info'),
 
         m('label', { for: 'todays-date' }, `Today's Date:`),
         m('input', {
-          onchange: (date) => { i9Form.todaysDate = date; },
+          onchange: m.withAttr('value', (date) => { i9Form.todaysDate = date; }),
           id: 'todays-date',
           value: i9Form.todaysDate,
           type: 'date'
         })
-      ])
+      ].concat(
+        makeTextInput({
+          id: 'employer-title',
+          labelText: 'Title of Employer or Authorized Representative',
+          initialValue: i9Form.employerTitle,
+          obj: i9Form,
+          key: 'employerTitle'
+        }),
+        makeTextInput({
+          id: 'employer-last-name',
+          labelText: 'Employer Last Name',
+          initialValue: i9Form.employerLastName,
+          obj: i9Form,
+          key: 'employerLastName'
+        }),
+        makeTextInput({
+          id: 'employer-first-name',
+          labelText: 'Employer First Name',
+          initialValue: i9Form.employerFirstName,
+          obj: i9Form,
+          key: 'employerFirstName'
+        }),
+        makeTextInput({
+          id: 'employer-business-name',
+          labelText: `Employer's Business or Organization Name`,
+          initialValue: i9Form.employerName,
+          obj: i9Form,
+          key: 'employerName'
+        }),
+        makeTextInput({
+          id: 'employer-address',
+          labelText: `Employer's Business or Organization Address (Street Number and Name)`,
+          initialValue: i9Form.employerAddress,
+          obj: i9Form,
+          key: 'employerAddress'
+        }),
+        makeTextInput({
+          id: 'employer-city',
+          labelText: 'City or Town',
+          initialValue: i9Form.employerCity,
+          obj: i9Form,
+          key: 'employerCity'
+        }),
+        makeTextInput({
+          id: 'employer-state',
+          labelText: 'State',
+          initialValue: i9Form.employerState,
+          obj: i9Form,
+          key: 'employerState'
+        }),
+        makeTextInput({
+          id: 'employer-zip-code',
+          labelText: 'ZIP Code',
+          initialValue: i9Form.employerZipCode,
+          obj: i9Form,
+          key: 'employerZipCode'
+        })
+      ))
+    }
+  });
+
+  const SubmitButton = (i9Form) => ({
+    view() {
+      const submitSection2 = (event) => {
+        event.preventDefault();
+        // m.request({
+        //   method: 'POST',
+        //   url: `/i9`,
+        //   data: i9Form
+        // }).then((resBody) => {
+        //   console.log(resBody);
+        // })
+        console.log(`Someday we're going to submit the following data:`);
+        console.log(i9Form);
+      };
+
+      return (
+        m('div',
+          m('input', {
+            type: 'submit',
+            class: 'b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib',
+            value: 'Submit Section 2',
+            onclick: submitSection2
+          })));
     }
   });
 
@@ -193,15 +288,25 @@
     hireDate:               '',
     todaysDate:             '',
     submittingOfficialName: '',
-
+    employerTitle:          '',
+    employerLastName:       '',
+    employerFirstName:      '',
+    employerName:           '',
+    employerAddress:        '',
+    employerCity:           '',
+    employerState:          '',
+    employerZipCode:        '',
 
     view() {
-      return m('form', [
-        m(Section1Info(this)),
-        m(DocumentSelect(this)),
-        m(Certification(this)),
-        m(Misc(this))
-      ]);
+      return m('form',
+        [
+          Section1Info,
+          DocumentSelect,
+          Certification,
+          EmployerInfo,
+          SubmitButton
+        ].map((component) => m(component(this)))
+      );
     }
   };
 
