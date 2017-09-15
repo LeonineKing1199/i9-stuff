@@ -1,56 +1,56 @@
-;(function() {
+; window.I9Section2 = (function() {
 
+  const makeTextInput = ({ id, labelText, initialValue , obj, key }) => {
+    return [
+      m('label', { for: id, class: 'f6 b db mb2' }, labelText),
+      m('input', {
+        onchange: m.withAttr('value', (val) => { obj[key] = val; }),
+        name: id,
+        id,
+        value: initialValue,
+        type: 'text',
+        class: 'input-reset ba b--black-20 pa2 mb2 db w-100'
+      })
+    ]
+  };
 
-  const Section1Info = (i9Form) => ({
-    view() {
+  const makeLabelInputPair  = ({ id, labelText, initialValue, opts = {} }) => {
+    return [
+      m('label', { for: id, class: 'f6 b db mb2' }, labelText),
+      m('input', {
+        name: id,
+        id,
+        value: initialValue,
+        type: 'text',
+        class: 'input-reset ba b--black-20 pa2 mb2 db w-100',
+        ...opts
+      })
+    ];
+  };
+
+  const Section1Info = {
+    view(vnode) {
+      const statusCode = Number(vnode.attrs.citizenshipStatusCode);
+
       return m('div', { class: 'measure' }, [
-        m('h2', 'Employee Info from Section I'),
+        m('h2', 'Employee Information from Section 1'),
 
-        // last name
-        m('label', { for: 'last-name', class: 'f6 b db mb2' }, 'Last Name'),
-        m('input', {
-          onchange: m.withAttr('value', (lastName) => { i9Form.lastName = lastName; }),
-          id: 'last-name',
-          class: 'input-reset ba b--black-20 pa2 mb2 db w-100',
-          type: 'text',
-          value: i9Form.lastName
-        }, i9Form.lastName),
-
-        // first name
-        m('label', { for: 'first-name', class: 'f6 b db mb2' }, 'First Name'),
-        m('input', {
-          onchange: m.withAttr('value', (firstName) => { i9Form.firstName = firstName }),
-          id: 'first-name',
-          class: 'input-reset ba b--black-20 pa2 mb2 db w-100',
-          type: 'text',
-          value: i9Form.firstName
-        }, i9Form.firstName),
-
-        // middle initial
-        m('label', { for: 'middle-initial', class: 'f6 b db mb2' }, 'M.I.'),
-        m('input', {
-          onchange: m.withAttr('value', (mi) => { i9Form.middleInitial = mi; }),
-          id: 'middle-initial',
-          class: 'input-reset ba b--black-20 pa2 mb2 db w-100',
-          type: 'text',
-          maxlength: '1'
-        }, i9Form.middleInitial),
+        ...makeLabelInputPair({ id: 'lastName', labelText: 'Last Name', initialValue: vnode.attrs.lastName, labelText: 'Last Name' }),
+        ...makeLabelInputPair({ id: 'firstName', labelText: 'First Name', initialValue: vnode.attrs.firstName, labelText: 'First Name' }),
+        ...makeLabelInputPair({ id: 'middleInitial', labelText: 'M.I.', initialValue: vnode.attrs.middleInitial, labelText: 'Middle Initial', opts: { maxlength: 1 } }),
 
         // citizenship/immigration status
         m('label', { for: 'citizenship-status' }, 'Citizenship / Immigration Status'),
-        m('select', {
-          id: 'citizenship-status',
-          onchange: m.withAttr('value', (status) => { i9Form.citizenshipStatusCode = Number(status); })
-        }, [
-          m('option', { value: -1, disabled: true, selected: true }, 'Select the corresponding status'),
-          m('option', { value: 4 }, 'Citizen of the United States'),
-          m('option', { value: 5 }, 'National of the United States'),
-          m('option', { value: 6 }, 'Lawful Permanent Resident'),
-          m('option', { value: 7 }, 'Alien Authorized to Work')
+        m('select', { id: 'citizenship-status', name: 'citizenshipStatusCode' }, [
+          m('option', { value: -1, disabled: true, selected: statusCode === -1  }, 'Select the corresponding status'),
+          m('option', { value: 4, selected: statusCode === 4 }, 'Citizen of the United States'),
+          m('option', { value: 5, selected: statusCode === 5 }, 'National of the United States'),
+          m('option', { value: 6, selected: statusCode === 6 }, 'Lawful Permanent Resident'),
+          m('option', { value: 7, selected: statusCode === 7 }, 'Alien Authorized to Work')
         ])
       ]);
     }
-  });
+  };
 
   const USPassportForm = (i9Form) => ({
     view() {
@@ -75,8 +75,18 @@
     }
   });
 
-  const DocumentSelect = (i9Form) => ({
-    view() {
+  const DocumentSelect = {
+    view(vnode) {
+      const citizenshipStatusCode = Number(vnode.attrs.citizenshipStatusCode);
+
+      if (citizenshipStatusCode < 0 || isNaN(citizenshipStatusCode)) {
+        return (
+          m('div', { class: 'measure' }, [
+            m('h2', 'Identity and Employment Authorization'),
+            m('p', 'Please select a citizenship status code first'),
+          ]));
+      }
+
       const docTypesMap = {
         'A_0': 29,
       };
@@ -93,28 +103,28 @@
         'A_5': m('div', { style: 'display:none;' }, `Must be presented with Form I-94 or Form I-94A indicating nonimmigrant admission under the Compact of Free Association Between the United States and the FSM or RMI`)
       };
 
-      const docInfoContainer = m('div', { id: 'doc-info-container' })
+      const getListADocOptions = (citizenshipStatusCode) => {
+        switch (citizenshipStatusCode) {
+          case 4:
+          case 5:
+            return [
+              m('option', { value: 'A_0' }, 'U.S. Passport or U.S. Passport Card')
+            ];
 
-      const onchange = (selectedDoc) => {
-        // styling stuff (makes help nodes visible for the relevant select choices)
-        Object.values(helpNodes).forEach((helpNode) => { helpNode.dom.style.display = 'none'; });
+          case 6:
+            return [
+              m('option', { value: 'A_1' }, 'Permanent Resident Card or Alien Registration Receipt Card (Form I-551)'),
+              m('option', { value: 'A_2' }, 'Foreign passport'),
+            ];
 
-        const helpNode = helpNodes[selectedDoc];
+          case 7:
+            return [
+              m('option', { value: 'A_3' }, 'Employment Authorization Document that contains a photograph (Form I-766)'),
+              m('option', { value: 'A_4' }, 'Foreign passport and Form I-94 or Form I-94A'),
+            ];
 
-        if (helpNode) {
-          helpNode.dom.style.display = '';
-        }
-
-        const docType = docTypesMap[selectedDoc];
-        if (docType) {
-          i9Form.documentTypeId = docType;
-        }
-
-        if (selectedDoc === 'A_0') {
-          m.render(docInfoContainer.dom, m(USPassportForm(i9Form)));
-        } else {
-          i9Form.passportNumber = '';
-          m.render(docInfoContainer.dom, null);
+          default:
+            return [];
         }
       };
 
@@ -122,23 +132,13 @@
         m('div', { class: 'measure' }, [
           m('h2', 'Identity and Employment Authorization'),
           m('p', 'The employee presented me with:'),
-          m('select', { onchange: m.withAttr('value', onchange) }, [
+          m('select', [
             m('option', { selected: true, disabled: true }, 'Please select a document'),
-            m('optgroup', { label: 'List A Documents' }, [
-              m('option', { value: 'A_0' }, 'U.S. Passport or U.S. Passport Card'),
-              m('option', { value: 'A_1' }, 'Permanent Resident Card or Alien Registration Receipt Card (Form I-551)'),
-              m('option', { value: 'A_2' }, 'Foreign passport'),
-              m('option', { value: 'A_3' }, 'Employment Authorization Document that contains a photograph (Form I-766)'),
-              m('option', { value: 'A_4' }, 'Foreign passport and Form I-94 or Form I-94A'),
-              m('option', { value: 'A_5' }, 'Passport from the Federated States of Micronesia (FSM) or the Republic of the Marshall Islands (RMI)')
-            ])
-          ]),
-          m('div', Object.values(helpNodes)),
-          docInfoContainer
-        ])
-      );
+            m('optgroup', { label: 'List A Documents' }, getListADocOptions(citizenshipStatusCode))
+          ])
+        ]));
     }
-  });
+  };
 
 
 
@@ -161,22 +161,6 @@
       ]);
     }
   });
-
-  const makeTextInput = ({ id, labelText, initialValue , obj, key }) => {
-    return [
-      m('label', { for: id, class: 'f6 b db mb2' }, labelText),
-      m('input', {
-        onchange: m.withAttr('value', (val) => { obj[key] = val; }),
-        id,
-        value: initialValue,
-        type: 'text',
-        class: 'input-reset ba b--black-20 pa2 mb2 db w-100'
-      })
-    ]
-  };
-
-
-
 
   const EmployerInfo = (i9Form) => ({
     view() {
@@ -277,7 +261,13 @@
     }
   });
 
-  const I9Form = {
+  const onFormChange = (i9FormData) => (event) => {
+    const key = event.target.name;
+    const prop = i9FormData[event.target.name];
+    i9FormData[key] = event.target.value;
+  };
+
+  const I9FormDefaults = {
     documentTypeId:         -1,
     lastName:               '',
     firstName:              '',
@@ -296,20 +286,34 @@
     employerCity:           '',
     employerState:          '',
     employerZipCode:        '',
+    class: 'asdfasdfsdfsfsdf'
+  };
 
-    view() {
-      return m('form',
-        [
-          Section1Info,
-          DocumentSelect,
-          Certification,
-          EmployerInfo,
-          SubmitButton
-        ].map((component) => m(component(this)))
-      );
+  const I9Form = {
+    view(vnode) {
+      return (
+        m('form', { onchange: onFormChange(vnode.attrs) }, [
+          m(Section1Info, vnode.attrs),
+          m(DocumentSelect, vnode.attrs)
+        ]));
     }
   };
 
-  window.mountI9Section2 =
-    (element, attrs) => m.render(element, m({ view() { return m(I9Form, attrs); } }));
+  class I9Section2 {
+    constructor(initialData = {}) {
+      this.formData = { ...I9FormDefaults, ...initialData };
+    }
+
+    mount(element) {
+      const formData = this.formData;
+      m.mount(element, {
+        view() {
+          return m(I9Form, formData);
+        }
+      });
+    }
+  }
+
+  return I9Section2;
+
 })();
