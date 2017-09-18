@@ -10,7 +10,11 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        const i9 = new I9Section2();
+        const i9 = new I9Section2({
+          firstName: 'John',
+          lastName:  'Doe'
+        });
+
         i9.mount(document.body);
       }, { once: true });
     </script>
