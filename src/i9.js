@@ -206,7 +206,7 @@
             })), []));
         }, vnodes);
 
-      return m('div', inputVNodes || []);
+      return m('div', { class: 'measure' }, inputVNodes || []);
     }
   };
 
@@ -252,7 +252,11 @@
             return listADocData.citizenshipStatusCodes.includes(citizenshipStatusCode)
           })
           .map((listADocData) => {
-            return m('option', { value: listADocData.documentTypeId }, listADocData.label);
+            const attrs = {
+              value: listADocData.documentTypeId,
+              selected: listADocData.documentTypeId === documentTypeId
+            };
+            return m('option', attrs, listADocData.label);
           }));
 
       return (
@@ -261,7 +265,7 @@
           m('p', 'The employee presented me with:'),
 
           m('select', { name: 'documentTypeId' }, [
-            m('option', { selected: true, disabled: true, value: -1 }, 'Please select a document'),
+            m('option', { selected: -1 === documentTypeId, disabled: true, value: -1 }, 'Please select a document'),
             m('optgroup', { label: 'List A Documents' }, listADocs)
           ])
         ]));
@@ -392,7 +396,14 @@
   const onFormChange = (i9FormData) => (event) => {
     const key = event.target.name;
     const prop = i9FormData[event.target.name];
+
+    console.log(key);
+
     i9FormData[key] = event.target.value;
+
+    if (key === 'citizenshipStatusCode') {
+      i9FormData.documentTypeId = -1;
+    }
   };
 
   const I9FormDefaults = {
