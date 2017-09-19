@@ -1,5 +1,6 @@
 ; window.I9Section2 = (function() {
 
+  const ListBCDocumentTypeId = 28;
 
   const ListADocumentData = [
     {
@@ -103,19 +104,191 @@
     }
   ];
 
-  const makeTextInput = ({ id, labelText, initialValue , obj, key }) => {
-    return [
-      m('label', { for: id, class: 'f6 b db mb2' }, labelText),
-      m('input', {
-        onchange: m.withAttr('value', (val) => { obj[key] = val; }),
-        name: id,
-        id,
-        value: initialValue,
-        type: 'text',
-        class: 'input-reset ba b--black-20 pa2 mb2 db w-100'
-      })
-    ]
-  };
+  const ListBDocumentData = [
+    {
+      documentTypeId: 1,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: `US Driver's License or ID card`,
+      inputs: [
+        {
+          label: 'License/ID Number',
+          sivField: 'listBCDocumentNumber'
+        },
+        {
+          label: 'Issuing State/ US Authority',
+          sivField: 'issuingAuthorityCode'
+        },
+        {
+          label: 'Expiration Date (if any)',
+          sivField: 'documentExpirationDate'
+        }
+      ]
+    },
+
+    {
+      documentTypeId: 2,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: 'ID Card Issued by a US Government Agency',
+      inputs: [
+        {
+          label: 'ID Number',
+          sivField: 'idCardNumber'
+        },
+        {
+          label: 'Expiration Date (optional) (mm/dd/yyyy)',
+          sivField: 'idCardExpirationDate'
+        }
+      ]
+    },
+
+    {
+      documentTypeId: 3,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: 'School ID Card',
+      inputs: [
+        {
+          label: 'ID Number',
+          sivField: 'schoolIdCardNumber'
+        },
+        {
+          label: 'Expiration Date (optional) (mm/dd/yyyy)',
+          sivField: 'schoolIdCardExpirationDate'
+        }
+      ]
+    },
+
+    {
+      documentTypeId: 4,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: 'Voter Registration Card',
+      inputs: [
+        {
+          label: 'VUID',
+          sivField: 'voterRegistrationCardIdNumber'
+        },
+        {
+          label: 'Expiration Date (optional) (mm/dd/yyyy)',
+          sivField: 'voterRegistrationCardExpirationDate'
+        }
+      ]
+    },
+
+    {
+      documentTypeId: 5,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: 'US Military Card or Draft Record',
+      inputs: [
+        {
+          label: 'DoD Identification Number',
+          sivField: 'militaryCardIdNumber'
+        },
+        {
+          label: 'Expiration Date (optional) (mm/dd/yyyy)',
+          sivField: 'voterRegistrationCardExpirationDate'
+        }
+      ]
+    },
+
+    {
+      documentTypeId: 6,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: `Military Dependent's ID Card`,
+      inputs: [
+        {
+          label: 'Expiration Date (optional) (mm/dd/yyyy)',
+          sivField: 'voterRegistrationCardExpirationDate'
+        }
+      ]
+    },
+
+    {
+      documentTypeId: 7,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: 'US Coast Guard Merchant Mariner Card',
+      inputs: [
+        {
+          label: 'Document Number',
+          sivField: 'merchantMarinerCardNumber'
+        },
+        {
+          label: 'Expiration Date (optional) (mm/dd/yyyy)',
+          sivField: 'voterRegistrationCardExpirationDate'
+        }
+      ]
+    },
+
+    {
+      documentTypeId: 8,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: 'Native American Tribal Document',
+      inputs: []
+    },
+
+    {
+      documentTypeId: 9,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: `Canadian Driver's License`,
+      input: [
+        {
+          label: 'License Number',
+          sivField: 'canadianDriversLicenseNumber'
+        },
+        {
+          label: 'Expiration Date (optional) (mm/dd/yyyy)',
+          sivField: 'canadianDriversLicenseExpirationDate'
+        }
+      ]
+    },
+
+    {
+      documentTypeId: 10,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: 'School Record or Report Card (under age 18)',
+      input: []
+    },
+
+    {
+      documentTypeId: 11,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: 'Clinic, Doctor or Hospital Record (under age 18)',
+      input: []
+    },
+
+    {
+      documentTypeId: 12,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: 'Day-Care or Nursery School Record (under age 18)',
+      inputs: []
+    },
+
+    {
+      documentTypeId: 21,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: 'Minor Under Age 18 Without a List B Document',
+      input: []
+    },
+
+    {
+      documentTypeId: 22,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: 'Special Placement',
+      inputs: []
+    }
+  ];
+
+  // const makeTextInput = ({ id, labelText, initialValue , obj, key }) => {
+  //   return [
+  //     m('label', { for: id, class: 'f6 b db mb2' }, labelText),
+  //     m('input', {
+  //       onchange: m.withAttr('value', (val) => { obj[key] = val; }),
+  //       name: id,
+  //       id,
+  //       value: initialValue,
+  //       type: 'text',
+  //       class: 'input-reset ba b--black-20 pa2 mb2 db w-100'
+  //     })
+  //   ]
+  // };
 
   const makeLabelInputPair  = ({ id, labelText, initialValue, opts = {} }) => {
     return [
@@ -178,65 +351,25 @@
     }
   };
 
-
-
-  const DocumentInfo = {
-    view(vnode) {
-      const citizenshipStatusCode = Number(vnode.attrs.citizenshipStatusCode);
-      const documentTypeId        = Number(vnode.attrs.documentTypeId);
-
-      if (citizenshipStatusCode < 0) {
-        return m('div', '');
-      }
-
-      const docSources = ListADocumentData;
-      const vnodes     = [];
-
-      const inputVNodes = docSources
-        .filter((docData) => {
-          return docData.citizenshipStatusCodes.includes(citizenshipStatusCode) && docData.documentTypeId === documentTypeId;
-        })
-        .reduce((vnodes, docData) => {
-          const inputs = docData.inputs || [];
-          return vnodes.concat(inputs.reduce(
-            (vnodes, { label, sivField }) => vnodes.concat(makeLabelInputPair({
-              id: sivField,
-              labelText: label,
-              initialValue: vnode.attrs[sivField] || ''
-            })), []));
-        }, vnodes);
-
-      return m('div', { class: 'measure' }, inputVNodes || []);
-    }
+  const generateDocumentSelectOptions = (citizenshipStatusCode = -1, currDocTypeId = -1, docData = []) => {
+    return (
+      docData
+        .filter(({ citizenshipStatusCodes }) => citizenshipStatusCodes.includes(citizenshipStatusCode))
+        .map(({ documentTypeId, label }) => {
+          return m(
+            'option',
+            {
+              value: documentTypeId,
+              selected: documentTypeId === currDocTypeId
+            },
+            label);
+        }));
   };
-
-  // const USPassportForm = (i9Form) => ({
-  //   view() {
-  //     return m('div', { class: 'measure' }, [
-  //       m('label', { for: 'passport-number', class: 'f6 b db mb2' }, 'Passport Number'),
-  //       m('input', {
-  //         onchange: m.withAttr('value', (num) => { i9Form.passportNumber = num; }),
-  //         id: 'passport-number',
-  //         class: 'input-reset ba b--black-20 pa2 mb2 db w-100',
-  //         type: 'text',
-  //         value: i9Form.passportNumber
-  //       }, i9Form.passportNumber),
-
-  //       m('label', { for: 'passport-expiration-date', class: 'f6 b db mb2' }, 'Expiration Date'),
-  //       m('input', {
-  //         onchange: m.withAttr('value', (value) => { i9Form.documentExpirationDate = value; }),
-  //         id: 'passport-expiration-date',
-  //         class: 'input-reset ba b--black-20 pa2 mb2 db w-100',
-  //         type: 'date'
-  //       })
-  //     ]);
-  //   }
-  // });
 
   const DocumentSelect = {
     view(vnode) {
       const citizenshipStatusCode = Number(vnode.attrs.citizenshipStatusCode);
-      const documentTypeId        = Number(vnode.attrs.documentTypeId);
+      const documentTypeId         = Number(vnode.attrs.documentTypeId);
 
       if (citizenshipStatusCode < 0 || isNaN(citizenshipStatusCode)) {
         return (
@@ -246,18 +379,7 @@
           ]));
       }
 
-      const listADocs = (
-        ListADocumentData
-          .filter((listADocData) => {
-            return listADocData.citizenshipStatusCodes.includes(citizenshipStatusCode)
-          })
-          .map((listADocData) => {
-            const attrs = {
-              value: listADocData.documentTypeId,
-              selected: listADocData.documentTypeId === documentTypeId
-            };
-            return m('option', attrs, listADocData.label);
-          }));
+      const listADocs = generateDocumentSelectOptions(citizenshipStatusCode, documentTypeId, ListADocumentData);
 
       return (
         m('div', { class: 'measure' }, [
@@ -266,13 +388,97 @@
 
           m('select', { name: 'documentTypeId' }, [
             m('option', { selected: -1 === documentTypeId, disabled: true, value: -1 }, 'Please select a document'),
-            m('optgroup', { label: 'List A Documents' }, listADocs)
-          ])
+            ...listADocs,
+            m(
+              'option',
+              {
+                selected: documentTypeId === ListBCDocumentTypeId,
+                value: ListBCDocumentTypeId
+              },
+              'List B and C Documents')
+          ]),
+
+          documentTypeId === ListBCDocumentTypeId
+          ? m(ListBAndCDocumentSelect, vnode.attrs)
+          : null
         ]));
     }
   };
 
+  const ListBAndCDocumentSelect = {
+    view(vnode) {
+      const documentTypeId = Number(vnode.attrs.documentTypeId);
+      if (documentTypeId !== ListBCDocumentTypeId) {
+        return null;
+      }
 
+      const citizenshipStatusCode = Number(vnode.attrs.citizenshipStatusCode);
+      if (citizenshipStatusCode < 0) {
+        return null;
+      }
+
+      const listBDocumentTypeId = Number(vnode.attrs.listBDocumentTypeId);
+      const listBOptions = generateDocumentSelectOptions(citizenshipStatusCode, listBDocumentTypeId, ListBDocumentData);
+
+      return m('div', { class: 'measure' },
+        [
+          m('select', { name: 'listBDocumentTypeId' },
+          [
+            m('option', { selected: -1 === listBDocumentTypeId, disabled: true, value: -1 }, 'Please select a document'),
+            ...listBOptions
+          ])
+        ]);
+    }
+  };
+
+
+  const docDataToVNodes = (documentTypeId = -1, vnode = {}, docDataSources = []) => {
+
+    const documentData = docDataSources.find(
+      (docData) => docData.documentTypeId === documentTypeId) || {};
+
+    const inputs = documentData.inputs || [];
+    const vnodes = inputs.reduce(
+      (vnodes, { label, sivField }) => {
+        const labelInputVNodePair = makeLabelInputPair({
+          id: sivField,
+          labelText: label,
+          initialValue: vnode.attrs[sivField] || ''
+        });
+        return vnodes.concat(labelInputVNodePair);
+      },
+      []);
+
+    return vnodes;
+  };
+
+  const ListADocumentInfo = {
+    view(vnode) {
+      const citizenshipStatusCode = Number(vnode.attrs.citizenshipStatusCode);
+      const documentTypeId        = Number(vnode.attrs.documentTypeId);
+
+      if (citizenshipStatusCode < 0 || documentTypeId === ListBCDocumentTypeId || documentTypeId < 0) {
+        return m('div', '');
+      }
+
+      return m(
+        'div',
+        { class: 'measure' },
+        docDataToVNodes(documentTypeId, vnode, ListADocumentData));
+    }
+  };
+
+  const ListBAndCDocumentInfo = {
+      view(vnode) {
+        const citizenshipStatusCode = Number(vnode.attrs.citizenshipStatusCode);
+        const documentTypeId        = Number(vnode.attrs.documentTypeId);
+
+        return m(
+          'div',
+          { class: 'measure' },
+          []);
+      }
+  };
 
   // const Certification = (i9Form) => ({
   //   view() {
@@ -394,20 +600,25 @@
   // });
 
   const onFormChange = (i9FormData) => (event) => {
-    const key = event.target.name;
+    const key  = event.target.name;
     const prop = i9FormData[event.target.name];
 
     console.log(key);
 
     i9FormData[key] = event.target.value;
 
+    // TODO: refactor this behavior using proxies or something
     if (key === 'citizenshipStatusCode') {
-      i9FormData.documentTypeId = -1;
+      i9FormData.documentTypeId      = -1;
+      i9FormData.listBDocumentTypeId = -1;
+      i9FormData.listCDocumentTypeId = -1;
     }
   };
 
   const I9FormDefaults = {
     documentTypeId:         -1,
+    listBDocumentTypeId:    -1,
+    listCDocumentTypeId:    -1,
     lastName:               '',
     firstName:              '',
     middleInitial:          '',
@@ -429,11 +640,16 @@
 
   const I9Form = {
     view(vnode) {
+      const documentTypeId = Number(vnode.attrs.documentTypeId);
+
       return (
         m('form', { onchange: onFormChange(vnode.attrs) }, [
           m(Section1Info, vnode.attrs),
           m(DocumentSelect, vnode.attrs),
-          m(DocumentInfo, vnode.attrs)
+
+          documentTypeId === ListBCDocumentTypeId
+          ? m(ListBAndCDocumentInfo, vnode.attrs)
+          : m(ListADocumentInfo, vnode.attrs)
         ]));
     }
   };
