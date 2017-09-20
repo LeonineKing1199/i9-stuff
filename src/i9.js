@@ -15,6 +15,10 @@
         {
           label: 'Alien Number / USCIS Number',
           sivField: 'alienNumber'
+        },
+        {
+          label: 'Issuing Authority',
+          sivField: 'permanentResidentCardIssuingAuthority'
         }
       ]
     },
@@ -31,6 +35,10 @@
         {
           label: 'Alien Number / USCIS Number',
           sivField: 'alienNumber'
+        },
+        {
+          label: 'Issuing Authority',
+          sivField: 'i776IssuingAuthority'
         },
         {
           label: 'Expiration Date (mm/dd/yyyy)',
@@ -70,11 +78,15 @@
     {
       documentTypeId: 25,
       citizenshipStatusCodes: [6],
-      label: 'Foreign Passport with Temporary I-551',
+      label: 'Foreign Passport With I-551 Stamp or MRIV',
       inputs: [
         {
           label: 'Passport Number',
           sivField: 'passportNumber'
+        },
+        {
+          label: 'Issuing Authority',
+          sivField: 'i551StampIssuingAuthority'
         },
         {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
@@ -99,6 +111,10 @@
         {
           label: 'Expiration Date (mm/dd/yyyy)',
           sivField: 'documentExpirationDate'
+        },
+        {
+          label: 'Issuing Authority',
+          sivField: 'usPassportIssuingAuthority'
         }
       ]
     }
@@ -111,11 +127,11 @@
       label: `US Driver's License or ID card`,
       inputs: [
         {
-          label: 'License/ID Number',
+          label: 'License / ID Number',
           sivField: 'listBCDocumentNumber'
         },
         {
-          label: 'Issuing State/ US Authority',
+          label: 'Issuing State / US Authority',
           sivField: 'issuingAuthorityCode'
         },
         {
@@ -137,6 +153,10 @@
         {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
           sivField: 'idCardExpirationDate'
+        },
+        {
+          label: 'Issuing Authority',
+          sivField: 'listBIdCardIssuingAuthority'
         }
       ]
     },
@@ -149,6 +169,10 @@
         {
           label: 'ID Number',
           sivField: 'schoolIdCardNumber'
+        },
+        {
+          label: 'Issuing Authority',
+          sivField: 'schoolIdIssuingAuthority'
         },
         {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
@@ -167,6 +191,10 @@
           sivField: 'voterRegistrationCardIdNumber'
         },
         {
+          label: 'Issuing Authority',
+          sivField: 'voterCardIssuingAuthority'
+        },
+        {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
           sivField: 'voterRegistrationCardExpirationDate'
         }
@@ -183,6 +211,10 @@
           sivField: 'militaryCardIdNumber'
         },
         {
+          label: 'Issuing Authority',
+          sivField: 'militaryCardIssuingAuthority'
+        },
+        {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
           sivField: 'voterRegistrationCardExpirationDate'
         }
@@ -197,6 +229,10 @@
         {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
           sivField: 'voterRegistrationCardExpirationDate'
+        },
+        {
+          label: 'Issuing Authority',
+          sivField: 'militaryDependentIssuingAuthority'
         }
       ]
     },
@@ -221,7 +257,16 @@
       documentTypeId: 8,
       citizenshipStatusCodes: [4, 5, 6, 7],
       label: 'Native American Tribal Document',
-      inputs: []
+      inputs: [
+        {
+          label: 'Issuing Authority',
+          sivField: 'tribalDocumentIssuingAuthority'
+        },
+        {
+          label: 'Expiration Date (optional) (mm/dd/yyyy)',
+          sivField: 'tribalDocumentExpirationDate'
+        }
+      ]
     },
 
     {
@@ -234,6 +279,10 @@
           sivField: 'canadianDriversLicenseNumber'
         },
         {
+          label: 'Issuing Authority',
+          sivField: 'canadianDriversLicenseIssuingAuthority'
+        },
+        {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
           sivField: 'canadianDriversLicenseExpirationDate'
         }
@@ -244,21 +293,36 @@
       documentTypeId: 10,
       citizenshipStatusCodes: [4, 5, 6, 7],
       label: 'School Record or Report Card (under age 18)',
-      input: []
+      input: [
+        {
+          label: 'Issuing Authority (School / Institution Name)',
+          sivField: 'schoolIssuingAuthority'
+        }
+      ]
     },
 
     {
       documentTypeId: 11,
       citizenshipStatusCodes: [4, 5, 6, 7],
       label: 'Clinic, Doctor or Hospital Record (under age 18)',
-      input: []
+      input: [
+        {
+          label: 'Issuing Authority (Clinic, Doctor, Hospital)',
+          sivField: 'medicalRecordIssuingAuthority'
+        }
+      ]
     },
 
     {
       documentTypeId: 12,
       citizenshipStatusCodes: [4, 5, 6, 7],
       label: 'Day-Care or Nursery School Record (under age 18)',
-      inputs: []
+      inputs: [
+        {
+          label: 'Issuing Authority',
+          sivField: 'nurseryIssuingAuthority'
+        }
+      ]
     },
 
     {
@@ -273,6 +337,132 @@
       citizenshipStatusCodes: [4, 5, 6, 7],
       label: 'Special Placement',
       inputs: []
+    }
+  ];
+
+  const ListCDocumentData = [
+    {
+      documentTypeId: 13,
+      citizenshipStatusCodes: [4, 5, 6 ,7],
+      label: 'US Social Security Card',
+      inputs: [
+        {
+          label: 'SSN',
+          sivField: 'ssn'
+        },
+        {
+          label: 'Issuing Authority',
+          sivField: 'ssnIssuingAuthority'
+        }
+      ]
+    },
+
+    {
+      documentTypeId: 14,
+      citizenshipStatusCodes: [4, 5],
+      label: 'Certification of Birth Abroad (Form FS-545)',
+      inputs: [
+        {
+          label: 'Certificate Number',
+          sivField: 'fs545CertificateNumber'
+        },
+        {
+          label: 'Issuing Authority',
+          sivField: 'fs545IssuingAuthority'
+        }
+      ]
+    },
+
+    {
+      documentTypeId: 15,
+      citizenshipStatusCodes: [4, 5],
+      label: 'Certification of Report of Birth (DS-1350)',
+      inputs: [
+        {
+          label: 'Certificate Number',
+          sivField: 'ds1350CertificateNumber'
+        },
+        {
+          label: 'Issuing Authority',
+          sivField: 'ds1350IssuingAuthority'
+        }
+      ]
+    },
+
+    {
+      documentTypeId: 16,
+      citizenshipStatusCodes: [4, 5],
+      label: 'US Birth Certificate (original or certified copy)',
+      inputs: [
+        {
+          label: 'Certificate Number',
+          sivField: 'usBirthCertificateNumber'
+        },
+        {
+          label: 'Issuing Authority (State that issued certificate)',
+          sivField: 'birthCertificateIssuingAuthority'
+        }
+      ]
+    },
+
+    {
+      documenTypeId: 17,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: 'Native American Tribal Record',
+      inputs: [
+        {
+          label: 'Document Number',
+          sivField: 'listCTribalDocumentNumber'
+        },
+        {
+          label: 'Issuing Authority (Issuing Tribe)',
+          sivField: 'listCTribalDocumentIssuingAuthority'
+        }
+      ]
+    },
+
+    {
+      documentTypeId: 18,
+      citizenshipStatusCodes: [4, 5],
+      label: 'US Citizen ID Card (Form I-197)',
+      inputs: [
+        {
+          label: 'Document Number',
+          sivField: 'i197CitizenDocumentNumber'
+        },
+        {
+          label: 'Issuing Authority',
+          sivField: 'i197CitizenIssuingAuthority'
+        }
+      ]
+    },
+
+    {
+      documentTypeId: 19,
+      citizenshipStatusCodes: [4, 5],
+      label: 'ID Card for Use of Resident Citizen in the US (I-179)',
+      inputs: [
+        {
+          label: 'Document Number',
+          sivField: 'i179ResidentDocumentNumber'
+        },
+        {
+          label: 'Issuing Authority',
+          sivField: 'i179ResidentIssuingAuthority'
+        }
+      ]
+    },
+
+    {
+      documentTypeId: 20,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: 'Employment authorization document issued by the DHS',
+      inputs: [
+        {
+          label: 'Document Number',
+          sivField: 'dhsEmploymentAuthDocumentNumber'
+        }
+      ]
     }
   ];
 
@@ -366,6 +556,40 @@
         }));
   };
 
+  const ListBAndCDocumentSelect = {
+    view(vnode) {
+      const documentTypeId = Number(vnode.attrs.documentTypeId);
+      if (documentTypeId !== ListBCDocumentTypeId) {
+        return null;
+      }
+
+      const citizenshipStatusCode = Number(vnode.attrs.citizenshipStatusCode);
+      if (citizenshipStatusCode < 0) {
+        return null;
+      }
+
+      const listBDocumentTypeId = Number(vnode.attrs.listBDocumentTypeId);
+      const listBOptions = generateDocumentSelectOptions(citizenshipStatusCode, listBDocumentTypeId, ListBDocumentData);
+
+      const listCDocumentTypeId = Number(vnode.attrs.listCDocumentTypeId);
+      const listCOptions = generateDocumentSelectOptions(citizenshipStatusCode, listCDocumentTypeId, ListCDocumentData);
+
+      return m('div', { class: 'measure' },
+        [
+          m('select', { name: 'listBDocumentTypeId' },
+          [
+            m('option', { selected: -1 === listBDocumentTypeId, disabled: true, value: -1 }, 'Please select a document'),
+            ...listBOptions
+          ]),
+          m('select', { name: 'listCDocumentTypeId' },
+          [
+            m('option', { selected: -1 === listCDocumentTypeId, disabled: true, valeu: -1}, 'Please select a document'),
+            ...listCOptions
+          ])
+        ]);
+    }
+  };
+
   const DocumentSelect = {
     view(vnode) {
       const citizenshipStatusCode = Number(vnode.attrs.citizenshipStatusCode);
@@ -405,37 +629,12 @@
     }
   };
 
-  const ListBAndCDocumentSelect = {
-    view(vnode) {
-      const documentTypeId = Number(vnode.attrs.documentTypeId);
-      if (documentTypeId !== ListBCDocumentTypeId) {
-        return null;
-      }
-
-      const citizenshipStatusCode = Number(vnode.attrs.citizenshipStatusCode);
-      if (citizenshipStatusCode < 0) {
-        return null;
-      }
-
-      const listBDocumentTypeId = Number(vnode.attrs.listBDocumentTypeId);
-      const listBOptions = generateDocumentSelectOptions(citizenshipStatusCode, listBDocumentTypeId, ListBDocumentData);
-
-      return m('div', { class: 'measure' },
-        [
-          m('select', { name: 'listBDocumentTypeId' },
-          [
-            m('option', { selected: -1 === listBDocumentTypeId, disabled: true, value: -1 }, 'Please select a document'),
-            ...listBOptions
-          ])
-        ]);
-    }
-  };
-
-
   const docDataToVNodes = (documentTypeId = -1, vnode = {}, docDataSources = []) => {
 
     const documentData = docDataSources.find(
-      (docData) => docData.documentTypeId === documentTypeId) || {};
+      (docData) => {
+        return docData.documentTypeId == documentTypeId;
+      });
 
     const inputs = documentData.inputs || [];
     const vnodes = inputs.reduce(
@@ -470,13 +669,29 @@
 
   const ListBAndCDocumentInfo = {
       view(vnode) {
-        const citizenshipStatusCode = Number(vnode.attrs.citizenshipStatusCode);
-        const documentTypeId        = Number(vnode.attrs.documentTypeId);
+        const {
+          citizenshipStatusCode,
+          documentTypeId,
+          listBDocumentTypeId,
+          listCDocumentTypeId } = vnode.attrs;
+
+        if ([citizenshipStatusCode, documentTypeId, listBDocumentTypeId, listCDocumentTypeId].includes(-1)) {
+          return m('div', '');
+        }
 
         return m(
           'div',
           { class: 'measure' },
-          []);
+          [
+            m('div',
+            [
+              m('h2', 'List B Document Information', docDataToVNodes(listBDocumentTypeId, vnode, ListBDocumentData)),
+            ]),
+            m('div',
+            [
+              m('h2', 'List C Document Information', docDataToVNodes(listCDocumentTypeId, vnode, ListCDocumentData))
+            ])
+          ]);
       }
   };
 
@@ -610,6 +825,11 @@
     // TODO: refactor this behavior using proxies or something
     if (key === 'citizenshipStatusCode') {
       i9FormData.documentTypeId      = -1;
+      i9FormData.listBDocumentTypeId = -1;
+      i9FormData.listCDocumentTypeId = -1;
+    }
+
+    if (key === 'documentTypeId') {
       i9FormData.listBDocumentTypeId = -1;
       i9FormData.listCDocumentTypeId = -1;
     }
