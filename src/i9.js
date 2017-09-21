@@ -10,15 +10,15 @@
       inputs: [
         {
           label: 'Green Card Number',
-          sivField: 'cardNumber'
+          formField: 'cardNumber'
         },
         {
           label: 'Alien Number / USCIS Number',
-          sivField: 'alienNumber'
+          formField: 'alienNumber'
         },
         {
           label: 'Issuing Authority',
-          sivField: 'permanentResidentCardIssuingAuthority'
+          formField: 'permanentResidentCardIssuingAuthority'
         }
       ]
     },
@@ -30,19 +30,19 @@
       inputs: [
         {
           label: 'Card Number',
-          sivField: 'cardNumber'
+          formField: 'cardNumber'
         },
         {
           label: 'Alien Number / USCIS Number',
-          sivField: 'alienNumber'
+          formField: 'alienNumber'
         },
         {
           label: 'Issuing Authority',
-          sivField: 'i776IssuingAuthority'
+          formField: 'i776IssuingAuthority'
         },
         {
           label: 'Expiration Date (mm/dd/yyyy)',
-          sivField: 'documentExpirationDate'
+          formField: 'documentExpirationDate'
         }
       ]
     },
@@ -54,23 +54,23 @@
       inputs: [
         {
           label: 'Passport Number',
-          sivField: 'passportNumber'
+          formField: 'passportNumber'
         },
         {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
-          sivField: 'documentExpirationDate'
+          formField: 'documentExpirationDate'
         },
         {
           label: 'Country of Issuance Code',
-          sivField: 'countryOfIssuanceCode'
+          formField: 'countryOfIssuanceCode'
         },
         {
           label: 'I-94 Number',
-          sivField: 'i94Number'
+          formField: 'i94Number'
         },
         {
           label: 'Visa Number (optional)',
-          sivField: 'visaNumber'
+          formField: 'visaNumber'
         }
       ]
     },
@@ -82,19 +82,19 @@
       inputs: [
         {
           label: 'Passport Number',
-          sivField: 'passportNumber'
+          formField: 'passportNumber'
         },
         {
           label: 'Issuing Authority',
-          sivField: 'i551StampIssuingAuthority'
+          formField: 'i551StampIssuingAuthority'
         },
         {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
-          sivField: 'documentExpirationDate'
+          formField: 'documentExpirationDate'
         },
         {
           label: 'Alien Number',
-          sivField: 'alienNumber'
+          formField: 'alienNumber'
         }
       ]
     },
@@ -106,15 +106,15 @@
       inputs: [
         {
           label: 'Passport Number',
-          sivField: 'passportNumber'
+          formField: 'passportNumber'
         },
         {
           label: 'Expiration Date (mm/dd/yyyy)',
-          sivField: 'documentExpirationDate'
+          formField: 'documentExpirationDate'
         },
         {
           label: 'Issuing Authority',
-          sivField: 'usPassportIssuingAuthority'
+          formField: 'usPassportIssuingAuthority'
         }
       ]
     }
@@ -128,15 +128,15 @@
       inputs: [
         {
           label: 'License / ID Number',
-          sivField: 'listBCDocumentNumber'
+          formField: 'listBCDocumentNumber'
         },
         {
           label: 'Issuing State / US Authority',
-          sivField: 'issuingAuthorityCode'
+          formField: 'issuingAuthorityCode'
         },
         {
           label: 'Expiration Date (if any)',
-          sivField: 'documentExpirationDate'
+          formField: 'documentExpirationDate'
         }
       ]
     },
@@ -148,15 +148,15 @@
       inputs: [
         {
           label: 'ID Number',
-          sivField: 'idCardNumber'
+          formField: 'idCardNumber'
         },
         {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
-          sivField: 'idCardExpirationDate'
+          formField: 'idCardExpirationDate'
         },
         {
           label: 'Issuing Authority',
-          sivField: 'listBIdCardIssuingAuthority'
+          formField: 'listBIdCardIssuingAuthority'
         }
       ]
     },
@@ -168,15 +168,15 @@
       inputs: [
         {
           label: 'ID Number',
-          sivField: 'schoolIdCardNumber'
+          formField: 'schoolIdCardNumber'
         },
         {
           label: 'Issuing Authority',
-          sivField: 'schoolIdIssuingAuthority'
+          formField: 'schoolIdIssuingAuthority'
         },
         {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
-          sivField: 'schoolIdCardExpirationDate'
+          formField: 'schoolIdCardExpirationDate'
         }
       ]
     },
@@ -188,15 +188,15 @@
       inputs: [
         {
           label: 'VUID',
-          sivField: 'voterRegistrationCardIdNumber'
+          formField: 'voterRegistrationCardIdNumber'
         },
         {
           label: 'Issuing Authority',
-          sivField: 'voterCardIssuingAuthority'
+          formField: 'voterCardIssuingAuthority'
         },
         {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
-          sivField: 'voterRegistrationCardExpirationDate'
+          formField: 'voterRegistrationCardExpirationDate'
         }
       ]
     },
@@ -208,15 +208,15 @@
       inputs: [
         {
           label: 'DoD Identification Number',
-          sivField: 'militaryCardIdNumber'
+          formField: 'militaryCardIdNumber'
         },
         {
           label: 'Issuing Authority',
-          sivField: 'militaryCardIssuingAuthority'
+          formField: 'militaryCardIssuingAuthority'
         },
         {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
-          sivField: 'voterRegistrationCardExpirationDate'
+          formField: 'voterRegistrationCardExpirationDate'
         }
       ]
     },
@@ -228,11 +228,11 @@
       inputs: [
         {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
-          sivField: 'voterRegistrationCardExpirationDate'
+          formField: 'voterRegistrationCardExpirationDate'
         },
         {
           label: 'Issuing Authority',
-          sivField: 'militaryDependentIssuingAuthority'
+          formField: 'militaryDependentIssuingAuthority'
         }
       ]
     },
@@ -244,11 +244,11 @@
       inputs: [
         {
           label: 'Document Number',
-          sivField: 'merchantMarinerCardNumber'
+          formField: 'merchantMarinerCardNumber'
         },
         {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
-          sivField: 'voterRegistrationCardExpirationDate'
+          formField: 'voterRegistrationCardExpirationDate'
         }
       ]
     },
@@ -260,11 +260,11 @@
       inputs: [
         {
           label: 'Issuing Authority',
-          sivField: 'tribalDocumentIssuingAuthority'
+          formField: 'tribalDocumentIssuingAuthority'
         },
         {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
-          sivField: 'tribalDocumentExpirationDate'
+          formField: 'tribalDocumentExpirationDate'
         }
       ]
     },
@@ -276,15 +276,15 @@
       inputs: [
         {
           label: 'License Number',
-          sivField: 'canadianDriversLicenseNumber'
+          formField: 'canadianDriversLicenseNumber'
         },
         {
           label: 'Issuing Authority',
-          sivField: 'canadianDriversLicenseIssuingAuthority'
+          formField: 'canadianDriversLicenseIssuingAuthority'
         },
         {
           label: 'Expiration Date (optional) (mm/dd/yyyy)',
-          sivField: 'canadianDriversLicenseExpirationDate'
+          formField: 'canadianDriversLicenseExpirationDate'
         }
       ]
     },
@@ -296,7 +296,7 @@
       inputs: [
         {
           label: 'Issuing Authority (School / Institution Name)',
-          sivField: 'schoolIssuingAuthority'
+          formField: 'schoolIssuingAuthority'
         }
       ]
     },
@@ -308,7 +308,7 @@
       inputs: [
         {
           label: 'Issuing Authority (Clinic, Doctor, Hospital)',
-          sivField: 'medicalRecordIssuingAuthority'
+          formField: 'medicalRecordIssuingAuthority'
         }
       ]
     },
@@ -320,7 +320,7 @@
       inputs: [
         {
           label: 'Issuing Authority',
-          sivField: 'nurseryIssuingAuthority'
+          formField: 'nurseryIssuingAuthority'
         }
       ]
     },
@@ -348,11 +348,11 @@
       inputs: [
         {
           label: 'SSN',
-          sivField: 'ssn'
+          formField: 'ssn'
         },
         {
           label: 'Issuing Authority',
-          sivField: 'ssnIssuingAuthority'
+          formField: 'ssnIssuingAuthority'
         }
       ]
     },
@@ -364,11 +364,11 @@
       inputs: [
         {
           label: 'Certificate Number',
-          sivField: 'fs545CertificateNumber'
+          formField: 'fs545CertificateNumber'
         },
         {
           label: 'Issuing Authority',
-          sivField: 'fs545IssuingAuthority'
+          formField: 'fs545IssuingAuthority'
         }
       ]
     },
@@ -380,11 +380,11 @@
       inputs: [
         {
           label: 'Certificate Number',
-          sivField: 'ds1350CertificateNumber'
+          formField: 'ds1350CertificateNumber'
         },
         {
           label: 'Issuing Authority',
-          sivField: 'ds1350IssuingAuthority'
+          formField: 'ds1350IssuingAuthority'
         }
       ]
     },
@@ -396,11 +396,11 @@
       inputs: [
         {
           label: 'Certificate Number',
-          sivField: 'usBirthCertificateNumber'
+          formField: 'usBirthCertificateNumber'
         },
         {
           label: 'Issuing Authority (State that issued certificate)',
-          sivField: 'birthCertificateIssuingAuthority'
+          formField: 'birthCertificateIssuingAuthority'
         }
       ]
     },
@@ -412,11 +412,11 @@
       inputs: [
         {
           label: 'Document Number',
-          sivField: 'listCTribalDocumentNumber'
+          formField: 'listCTribalDocumentNumber'
         },
         {
           label: 'Issuing Authority (Issuing Tribe)',
-          sivField: 'listCTribalDocumentIssuingAuthority'
+          formField: 'listCTribalDocumentIssuingAuthority'
         }
       ]
     },
@@ -428,11 +428,11 @@
       inputs: [
         {
           label: 'Document Number',
-          sivField: 'i197CitizenDocumentNumber'
+          formField: 'i197CitizenDocumentNumber'
         },
         {
           label: 'Issuing Authority',
-          sivField: 'i197CitizenIssuingAuthority'
+          formField: 'i197CitizenIssuingAuthority'
         }
       ]
     },
@@ -444,11 +444,11 @@
       inputs: [
         {
           label: 'Document Number',
-          sivField: 'i179ResidentDocumentNumber'
+          formField: 'i179ResidentDocumentNumber'
         },
         {
           label: 'Issuing Authority',
-          sivField: 'i179ResidentIssuingAuthority'
+          formField: 'i179ResidentIssuingAuthority'
         }
       ]
     },
@@ -460,25 +460,11 @@
       inputs: [
         {
           label: 'Document Number',
-          sivField: 'dhsEmploymentAuthDocumentNumber'
+          formField: 'dhsEmploymentAuthDocumentNumber'
         }
       ]
     }
   ];
-
-  // const makeTextInput = ({ id, labelText, initialValue , obj, key }) => {
-  //   return [
-  //     m('label', { for: id, class: 'f6 b db mb2' }, labelText),
-  //     m('input', {
-  //       onchange: m.withAttr('value', (val) => { obj[key] = val; }),
-  //       name: id,
-  //       id,
-  //       value: initialValue,
-  //       type: 'text',
-  //       class: 'input-reset ba b--black-20 pa2 mb2 db w-100'
-  //     })
-  //   ]
-  // };
 
   const makeLabelInputPair  = ({ id, labelText, initialValue, opts = {} }) => {
     return [
@@ -494,34 +480,49 @@
     ];
   };
 
+  const Header = {
+    view(vnode) {
+      return (
+        m(
+          'div',
+          {
+            class: 'ba bw1 bg-black-20 mv2'
+          },
+          [
+            m('strong', { class: 'f4' }, 'Section 2. Employer or Authorized Representative Review and Verification'),
+            m('br'),
+            m('span',
+              m('em', `(Employers or their authorized representative must complete and sign Section 2 within 3 business days of the employee's first day of employment. You must physically examine one document from List A OR a combination of one document from List B and one document from List C as listed on the "Lists of Acceptable Documents.")`))
+          ]));
+    }
+  };
+
   const Section1Info = {
     view(vnode) {
-      const statusCode = Number(vnode.attrs.citizenshipStatusCode);
+      const i9Form     = vnode.attrs;
+      const statusCode = Number(i9Form.citizenshipStatusCode);
 
-      return m('div', { class: 'measure' }, [
-        m('h2', 'Employee Information from Section 1'),
+      return m('div', { class: 'ba bw1 pa2' }, [
+        m('strong', { class: 'f4 fl w-100 pb3' }, 'Employee Info from Section 1'),
 
         ...makeLabelInputPair({
           id: 'lastName',
           labelText: 'Last Name',
-          initialValue: vnode.attrs.lastName,
-          labelText: 'Last Name',
+          initialValue: i9Form.lastName,
           opts: { disabled: true }
         }),
 
         ...makeLabelInputPair({
           id: 'firstName',
           labelText: 'First Name',
-          initialValue: vnode.attrs.firstName,
-          labelText: 'First Name',
+          initialValue: i9Form.firstName,
           opts: { disabled: true }
         }),
 
         ...makeLabelInputPair({
           id: 'middleInitial',
           labelText: 'M.I.',
-          initialValue: vnode.attrs.middleInitial,
-          labelText: 'Middle Initial',
+          initialValue: i9Form.middleInitial,
           opts: {
             disabled: true,
             maxlength: 1
@@ -638,11 +639,11 @@
 
     const inputs = documentData.inputs || [];
     const vnodes = inputs.reduce(
-      (vnodes, { label, sivField }) => {
+      (vnodes, { label, formField }) => {
         const labelInputVNodePair = makeLabelInputPair({
-          id: sivField,
+          id: formField,
           labelText: label,
-          initialValue: vnode.attrs[sivField] || ''
+          initialValue: vnode.attrs[formField] || ''
         });
         return vnodes.concat(labelInputVNodePair);
       },
@@ -749,7 +750,6 @@
   const EmployerInfo = {
     view(vnode) {
       const i9Form = vnode.attrs;
-
       return m('div', { class: 'measure' }, [
         m('h2', 'Employer Info'),
 
@@ -880,18 +880,25 @@
       const i9Form         = vnode.attrs;
       const documentTypeId = Number(i9Form.documentTypeId);
       return (
-        m('form', { onchange: onFormChange(i9Form) }, [
-          m(Section1Info, i9Form),
-          m(DocumentSelect, i9Form),
+        m(
+          'form',
+          {
+            autocomplete: 'off',
+            onchange: onFormChange(i9Form)
+          },
+          [
+            m(Header),
+            m(Section1Info, i9Form),
+            m(DocumentSelect, i9Form),
 
-          documentTypeId === ListBCDocumentTypeId
-          ? m(ListBAndCDocumentInfo, i9Form)
-          : m(ListADocumentInfo, i9Form),
+            documentTypeId === ListBCDocumentTypeId
+            ? m(ListBAndCDocumentInfo, i9Form)
+            : m(ListADocumentInfo, i9Form),
 
-          m(AdditionalInformation, i9Form),
-          m(Certification, i9Form),
-          m(EmployerInfo, i9Form)
-        ]));
+            m(AdditionalInformation, i9Form),
+            m(Certification, i9Form),
+            m(EmployerInfo, i9Form)
+          ]));
     }
   };
 
@@ -904,6 +911,7 @@
     }
 
     mount(element) {
+      this.element = element;
       const formData = this.formData;
       m.mount(element, {
         view() {
@@ -912,8 +920,10 @@
       });
     }
 
+    unmount() {
+      m.mount(this.element, null);
+    }
   }
 
   return I9Section2;
-
 })();
