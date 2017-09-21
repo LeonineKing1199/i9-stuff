@@ -273,7 +273,7 @@
       documentTypeId: 9,
       citizenshipStatusCodes: [4, 5, 6, 7],
       label: `Canadian Driver's License`,
-      input: [
+      inputs: [
         {
           label: 'License Number',
           sivField: 'canadianDriversLicenseNumber'
@@ -293,7 +293,7 @@
       documentTypeId: 10,
       citizenshipStatusCodes: [4, 5, 6, 7],
       label: 'School Record or Report Card (under age 18)',
-      input: [
+      inputs: [
         {
           label: 'Issuing Authority (School / Institution Name)',
           sivField: 'schoolIssuingAuthority'
@@ -305,7 +305,7 @@
       documentTypeId: 11,
       citizenshipStatusCodes: [4, 5, 6, 7],
       label: 'Clinic, Doctor or Hospital Record (under age 18)',
-      input: [
+      inputs: [
         {
           label: 'Issuing Authority (Clinic, Doctor, Hospital)',
           sivField: 'medicalRecordIssuingAuthority'
@@ -675,8 +675,13 @@
           listBDocumentTypeId,
           listCDocumentTypeId } = vnode.attrs;
 
-        if ([citizenshipStatusCode, documentTypeId, listBDocumentTypeId, listCDocumentTypeId].includes(-1)) {
-          return m('div', '');
+        if ([
+          citizenshipStatusCode,
+          documentTypeId,
+          listBDocumentTypeId,
+          listCDocumentTypeId].includes(-1)
+        ) {
+          return null;
         }
 
         return m(
@@ -695,98 +700,110 @@
       }
   };
 
-  // const Certification = (i9Form) => ({
-  //   view() {
-  //     return m('div', [
-  //       m('p', [
-  //         m('strong', 'Certification:'),
-  //         ' I attest, under penalty of perjury, that (1) I have examined the document(s) presented by the above-named employee, (2) the above-listed document(s) appear to be genuine and to relate to the employee named, and (3) to the best of my knowledge the employee is authorized to work in the United States.'
-  //       ]),
-  //       m('p', [
-  //         m('strong', `The employee's first day of employment: `),
-  //         m('span',
-  //           m('input', {
-  //             type: 'date',
-  //             value: i9Form.hireDate,
-  //             onchange: m.withAttr('value', (date) => { i9Form.hireDate = date; })
-  //           }))
-  //       ])
-  //     ]);
-  //   }
-  // });
+  const AdditionalInformation = {
+    view(vnode) {
+      const documentTypeId      = Number(vnode.attrs.documentTypeId);
+      const listBDocumentTypeId = Number(vnode.attrs.listBDocumentTypeId);
+      const listCDocumentTypeId = Number(vnode.attrs.listCDocumentTypeId);
 
-  // const EmployerInfo = (i9Form) => ({
-  //   view() {
-  //     return m('div', { class: 'measure' }, [
-  //       m('h2', 'Employer Info'),
+      if (
+        (documentTypeId === ListBCDocumentTypeId &&
+        (listBDocumentTypeId < 0 || listCDocumentTypeId < 0)) ||
+        (documentTypeId < 0)
+      ) {
+        return null;
+      }
 
-  //       m('label', { for: 'todays-date' }, `Today's Date:`),
-  //       m('input', {
-  //         onchange: m.withAttr('value', (date) => { i9Form.todaysDate = date; }),
-  //         id: 'todays-date',
-  //         value: i9Form.todaysDate,
-  //         type: 'date'
-  //       })
-  //     ].concat(
-  //       makeTextInput({
-  //         id: 'employer-title',
-  //         labelText: 'Title of Employer or Authorized Representative',
-  //         initialValue: i9Form.employerTitle,
-  //         obj: i9Form,
-  //         key: 'employerTitle'
-  //       }),
-  //       makeTextInput({
-  //         id: 'employer-last-name',
-  //         labelText: 'Employer Last Name',
-  //         initialValue: i9Form.employerLastName,
-  //         obj: i9Form,
-  //         key: 'employerLastName'
-  //       }),
-  //       makeTextInput({
-  //         id: 'employer-first-name',
-  //         labelText: 'Employer First Name',
-  //         initialValue: i9Form.employerFirstName,
-  //         obj: i9Form,
-  //         key: 'employerFirstName'
-  //       }),
-  //       makeTextInput({
-  //         id: 'employer-business-name',
-  //         labelText: `Employer's Business or Organization Name`,
-  //         initialValue: i9Form.employerName,
-  //         obj: i9Form,
-  //         key: 'employerName'
-  //       }),
-  //       makeTextInput({
-  //         id: 'employer-address',
-  //         labelText: `Employer's Business or Organization Address (Street Number and Name)`,
-  //         initialValue: i9Form.employerAddress,
-  //         obj: i9Form,
-  //         key: 'employerAddress'
-  //       }),
-  //       makeTextInput({
-  //         id: 'employer-city',
-  //         labelText: 'City or Town',
-  //         initialValue: i9Form.employerCity,
-  //         obj: i9Form,
-  //         key: 'employerCity'
-  //       }),
-  //       makeTextInput({
-  //         id: 'employer-state',
-  //         labelText: 'State',
-  //         initialValue: i9Form.employerState,
-  //         obj: i9Form,
-  //         key: 'employerState'
-  //       }),
-  //       makeTextInput({
-  //         id: 'employer-zip-code',
-  //         labelText: 'ZIP Code',
-  //         initialValue: i9Form.employerZipCode,
-  //         obj: i9Form,
-  //         key: 'employerZipCode'
-  //       })
-  //     ))
-  //   }
-  // });
+      return (
+        m('div', [
+          m('h4', 'Additional Information (if any)'),
+          m(
+            'textarea',
+            { name: 'additionalInformation', rows: 4, cols: 50 },
+            vnode.attrs.additionalInformation || '')
+        ]));
+    }
+  };
+
+  const Certification = {
+    view(vnode) {
+      return (
+        m('div', [
+          m('h2', 'Certification:'),
+          m('p', ' I attest, under penalty of perjury, that (1) I have examined the document(s) presented by the above-named employee, (2) the above-listed document(s) appear to be genuine and to relate to the employee named, and (3) to the best of my knowledge the employee is authorized to work in the United States.'),
+          m('p', [
+            m('strong', `The employee's first day of employment: `),
+            m('span',
+              m(
+                'input',
+                {
+                  type: 'date',
+                  value: vnode.attrs.hireDate || '',
+                  name: 'hireDate'
+                }))
+          ])
+        ]));
+    }
+  };
+
+  const EmployerInfo = {
+    view(vnode) {
+      const i9Form = vnode.attrs;
+
+      return m('div', { class: 'measure' }, [
+        m('h2', 'Employer Info'),
+
+        m('label', { for: 'todays-date' }, `Today's Date:`),
+        m('input', {
+          name: 'todaysDate',
+          id: 'todays-date',
+          value: i9Form.todaysDate,
+          type: 'date'
+        })
+      ].concat(
+        makeLabelInputPair({
+          id: 'employerTitle',
+          labelText: 'Title of Employer or Authorized Representative',
+          initialValue: i9Form.employerTitle
+        }),
+        makeLabelInputPair({
+          id: 'employerLastName',
+          labelText: 'Employer Last Name',
+          initialValue: i9Form.employerLastName
+        }),
+        makeLabelInputPair({
+          id: 'employerFirstName',
+          labelText: 'Employer First Name',
+          initialValue: i9Form.employerFirstName
+        }),
+        makeLabelInputPair({
+          id: 'employerName',
+          labelText: `Employer's Business or Organization Name`,
+          initialValue: i9Form.employerName
+        }),
+        makeLabelInputPair({
+          id: 'employerAddress',
+          labelText: `Employer's Business or Organization Address (Street Number and Name)`,
+          initialValue: i9Form.employerAddress
+        }),
+        makeLabelInputPair({
+          id: 'employerCity',
+          labelText: 'City or Town',
+          initialValue: i9Form.employerCity
+        }),
+        makeLabelInputPair({
+          id: 'employerState',
+          labelText: 'State',
+          initialValue: i9Form.employerState
+        }),
+        makeLabelInputPair({
+          id: 'employerZipCode',
+          labelText: 'ZIP Code',
+          initialValue: i9Form.employerZipCode
+        })
+      ))
+    }
+  };
 
   // const SubmitButton = (i9Form) => ({
   //   view() {
@@ -816,7 +833,6 @@
 
   const onFormChange = (i9FormData) => (event) => {
     const key  = event.target.name;
-    const prop = i9FormData[event.target.name];
 
     console.log(key);
 
@@ -824,9 +840,10 @@
 
     // TODO: refactor this behavior using proxies or something
     if (key === 'citizenshipStatusCode') {
-      i9FormData.documentTypeId      = -1;
-      i9FormData.listBDocumentTypeId = -1;
-      i9FormData.listCDocumentTypeId = -1;
+      i9FormData.documentTypeId        = -1;
+      i9FormData.listBDocumentTypeId   = -1;
+      i9FormData.listCDocumentTypeId   = -1;
+      i9FormData.additionalInformation = '';
     }
 
     if (key === 'documentTypeId') {
@@ -860,16 +877,20 @@
 
   const I9Form = {
     view(vnode) {
-      const documentTypeId = Number(vnode.attrs.documentTypeId);
-
+      const i9Form         = vnode.attrs;
+      const documentTypeId = Number(i9Form.documentTypeId);
       return (
-        m('form', { onchange: onFormChange(vnode.attrs) }, [
-          m(Section1Info, vnode.attrs),
-          m(DocumentSelect, vnode.attrs),
+        m('form', { onchange: onFormChange(i9Form) }, [
+          m(Section1Info, i9Form),
+          m(DocumentSelect, i9Form),
 
           documentTypeId === ListBCDocumentTypeId
-          ? m(ListBAndCDocumentInfo, vnode.attrs)
-          : m(ListADocumentInfo, vnode.attrs)
+          ? m(ListBAndCDocumentInfo, i9Form)
+          : m(ListADocumentInfo, i9Form),
+
+          m(AdditionalInformation, i9Form),
+          m(Certification, i9Form),
+          m(EmployerInfo, i9Form)
         ]));
     }
   };
