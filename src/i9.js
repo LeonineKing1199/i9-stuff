@@ -2,6 +2,13 @@
 
   const ListBCDocumentTypeId = 28;
 
+  const CitizenshipStatusCodes = [
+    { statusCode: 4, label: 'US Citizen' },
+    { statusCode: 5, label: 'US National' },
+    { statusCode: 6, label: 'Lawful Permanent Resident' },
+    { statusCode: 7, label: 'Alien Authorized to Work' }
+  ];
+
   const ListADocumentData = [
     {
       documentTypeId: 13,
@@ -406,7 +413,7 @@
     },
 
     {
-      documenTypeId: 17,
+      documentTypeId: 17,
       citizenshipStatusCodes: [4, 5, 6, 7],
       label: 'Native American Tribal Record',
       inputs: [
@@ -497,26 +504,35 @@
     }
   };
 
+  const sectionClass = 'ba bw1 pa2 mt2 mb2';
+  const titleClass   = 'f5 fl w-100 pb3';
+
   const Section1Info = {
     view(vnode) {
-      const i9Form     = vnode.attrs;
-      const statusCode = Number(i9Form.citizenshipStatusCode);
+      const i9Form                = vnode.attrs;
+      const citizenshipStatusCode = Number(i9Form.citizenshipStatusCode);
 
-      return m('div', { class: 'ba bw1 pa2' }, [
-        m('strong', { class: 'f4 fl w-100 pb3' }, 'Employee Info from Section 1'),
+      return m('div', { class: sectionClass }, [
+        m('strong', { class: titleClass }, 'Employee Info from Section 1'),
 
         ...makeLabelInputPair({
           id: 'lastName',
           labelText: 'Last Name',
           initialValue: i9Form.lastName,
-          opts: { disabled: true }
+          opts: {
+            disabled: true,
+            class: 'input-reset ba b--black-20 pa2 mb2 db w-60'
+          }
         }),
 
         ...makeLabelInputPair({
           id: 'firstName',
           labelText: 'First Name',
           initialValue: i9Form.firstName,
-          opts: { disabled: true }
+          opts: {
+            disabled: true,
+            class: 'input-reset ba b--black-20 pa2 mb2 db w-60'
+           }
         }),
 
         ...makeLabelInputPair({
@@ -525,18 +541,20 @@
           initialValue: i9Form.middleInitial,
           opts: {
             disabled: true,
-            maxlength: 1
+            maxlength: 1,
+            class: 'input-reset ba b--black-20 pa2 mb2 db w-10'
           }
         }),
 
         // citizenship/immigration status
-        m('label', { for: 'citizenship-status' }, 'Citizenship / Immigration Status'),
+        m('label', { for: 'citizenship-status', class: 'mr3' }, 'Citizenship / Immigration Status'),
         m('select', { id: 'citizenship-status', name: 'citizenshipStatusCode' }, [
-          m('option', { value: -1, disabled: true, selected: statusCode === -1  }, 'Select the corresponding status'),
-          m('option', { value: 4, selected: statusCode === 4 }, 'Citizen of the United States'),
-          m('option', { value: 5, selected: statusCode === 5 }, 'National of the United States'),
-          m('option', { value: 6, selected: statusCode === 6 }, 'Lawful Permanent Resident'),
-          m('option', { value: 7, selected: statusCode === 7 }, 'Alien Authorized to Work')
+          m('option', { value: -1, disabled: true, selected: citizenshipStatusCode < 0  }, 'Select the corresponding status'),
+          ...CitizenshipStatusCodes.map(({ statusCode, label }) => {
+            const selected = (citizenshipStatusCode === statusCode);
+            const value    = statusCode;
+            return m('option', { selected, value }, label);
+          })
         ])
       ]);
     }
@@ -559,47 +577,57 @@
 
   const ListBAndCDocumentSelect = {
     view(vnode) {
-      const documentTypeId = Number(vnode.attrs.documentTypeId);
+      const i9Form = vnode.attrs;
+
+      const documentTypeId = Number(i9Form.documentTypeId);
       if (documentTypeId !== ListBCDocumentTypeId) {
         return null;
       }
 
-      const citizenshipStatusCode = Number(vnode.attrs.citizenshipStatusCode);
+      const citizenshipStatusCode = Number(i9Form.citizenshipStatusCode);
       if (citizenshipStatusCode < 0) {
         return null;
       }
 
-      const listBDocumentTypeId = Number(vnode.attrs.listBDocumentTypeId);
+      const listBDocumentTypeId = Number(i9Form.listBDocumentTypeId);
       const listBOptions = generateDocumentSelectOptions(citizenshipStatusCode, listBDocumentTypeId, ListBDocumentData);
 
-      const listCDocumentTypeId = Number(vnode.attrs.listCDocumentTypeId);
+      const listCDocumentTypeId = Number(i9Form.listCDocumentTypeId);
       const listCOptions = generateDocumentSelectOptions(citizenshipStatusCode, listCDocumentTypeId, ListCDocumentData);
 
-      return m('div', { class: 'measure' },
+      return m('div', { class: 'measure pb3' },
         [
-          m('select', { name: 'listBDocumentTypeId' },
-          [
-            m('option', { selected: -1 === listBDocumentTypeId, disabled: true, value: -1 }, 'Please select a document'),
-            ...listBOptions
+          m('div', { class: 'pb3' }, [
+            m('label', { for: 'list-b-document-select' }, 'List B Documents'),
+            m('select', { name: 'listBDocumentTypeId', id: 'list-b-document-select' },
+            [
+              m('option', { selected: listBDocumentTypeId < 0, disabled: true, value: -1 }, 'Please select a document'),
+              ...listBOptions
+            ]),
           ]),
-          m('select', { name: 'listCDocumentTypeId' },
-          [
-            m('option', { selected: -1 === listCDocumentTypeId, disabled: true, valeu: -1}, 'Please select a document'),
-            ...listCOptions
-          ])
+
+          m('div', [
+            m('label', { for: 'list-c-document-select' }, 'List C Documents'),
+            m('select', { name: 'listCDocumentTypeId', id: 'list-c-document-select' },
+            [
+              m('option', { selected: -1 === listCDocumentTypeId, disabled: true, valeu: -1}, 'Please select a document'),
+              ...listCOptions
+            ])
+          ]),
         ]);
     }
   };
 
   const DocumentSelect = {
     view(vnode) {
-      const citizenshipStatusCode = Number(vnode.attrs.citizenshipStatusCode);
-      const documentTypeId         = Number(vnode.attrs.documentTypeId);
+      const i9Form                = vnode.attrs;
+      const citizenshipStatusCode = Number(i9Form.citizenshipStatusCode);
+      const documentTypeId        = Number(i9Form.documentTypeId);
 
       if (citizenshipStatusCode < 0 || isNaN(citizenshipStatusCode)) {
         return (
-          m('div', { class: 'measure' }, [
-            m('h2', 'Identity and Employment Authorization'),
+          m('div', { class: sectionClass }, [
+            m('strong', { class: titleClass }, 'Identity and Employment Authorization'),
             m('p', 'Please select a citizenship status code first'),
           ]));
       }
@@ -607,11 +635,11 @@
       const listADocs = generateDocumentSelectOptions(citizenshipStatusCode, documentTypeId, ListADocumentData);
 
       return (
-        m('div', { class: 'measure' }, [
-          m('h2', 'Identity and Employment Authorization'),
+        m('div', { class: sectionClass }, [
+          m('strong', { class: 'f5'}, 'Identity and Employment Authorization'),
           m('p', 'The employee presented me with:'),
 
-          m('select', { name: 'documentTypeId' }, [
+          m('select', { name: 'documentTypeId', class: 'mb3' }, [
             m('option', { selected: -1 === documentTypeId, disabled: true, value: -1 }, 'Please select a document'),
             ...listADocs,
             m(
@@ -624,8 +652,14 @@
           ]),
 
           documentTypeId === ListBCDocumentTypeId
-          ? m(ListBAndCDocumentSelect, vnode.attrs)
-          : null
+          ? m(ListBAndCDocumentSelect, i9Form)
+          : null,
+
+          documentTypeId === ListBCDocumentTypeId
+          ? m(ListBAndCDocumentInfo, i9Form)
+          : m(ListADocumentInfo, i9Form),
+
+          m(AdditionalInformation, i9Form),
         ]));
     }
   };
@@ -654,27 +688,34 @@
 
   const ListADocumentInfo = {
     view(vnode) {
-      const citizenshipStatusCode = Number(vnode.attrs.citizenshipStatusCode);
-      const documentTypeId        = Number(vnode.attrs.documentTypeId);
+      const i9Form = vnode.attrs;
 
-      if (citizenshipStatusCode < 0 || documentTypeId === ListBCDocumentTypeId || documentTypeId < 0) {
-        return m('div', '');
+      const citizenshipStatusCode = Number(i9Form.citizenshipStatusCode);
+      const documentTypeId        = Number(i9Form.documentTypeId);
+
+      if (
+        citizenshipStatusCode < 0 ||
+        documentTypeId === ListBCDocumentTypeId ||
+        documentTypeId < 0
+      ) {
+        return null;
       }
 
       return m(
         'div',
-        { class: 'measure' },
+        { class: 'measure pb3' },
         docDataToVNodes(documentTypeId, vnode, ListADocumentData));
     }
   };
 
   const ListBAndCDocumentInfo = {
       view(vnode) {
-        const {
-          citizenshipStatusCode,
-          documentTypeId,
-          listBDocumentTypeId,
-          listCDocumentTypeId } = vnode.attrs;
+        const i9Form = vnode.attrs;
+
+        const citizenshipStatusCode = Number(i9Form.citizenshipStatusCode);
+        const documentTypeId        = Number(i9Form.documentTypeId);
+        const listBDocumentTypeId   = Number(i9Form.listBDocumentTypeId);
+        const listCDocumentTypeId   = Number(i9Form.listCDocumentTypeId);
 
         if ([
           citizenshipStatusCode,
@@ -685,17 +726,21 @@
           return null;
         }
 
+        const listBDocInputs = docDataToVNodes(listBDocumentTypeId, vnode, ListBDocumentData)
+
         return m(
           'div',
           { class: 'measure' },
           [
-            m('div',
+            m('div', { class: '' },
             [
-              m('h2', 'List B Document Information', docDataToVNodes(listBDocumentTypeId, vnode, ListBDocumentData)),
+              listBDocInputs.length > 0
+              ? m('strong', { class: 'f5' }, 'List B Document Information', listBDocInputs)
+              : null
             ]),
-            m('div',
+            m('div', { class: 'pt3 pb3' },
             [
-              m('h2', 'List C Document Information', docDataToVNodes(listCDocumentTypeId, vnode, ListCDocumentData))
+              m('strong', { class: 'f5' }, 'List C Document Information', docDataToVNodes(listCDocumentTypeId, vnode, ListCDocumentData))
             ])
           ]);
       }
@@ -730,10 +775,9 @@
     view(vnode) {
       return (
         m('div', [
-          m('h2', 'Certification:'),
-          m('p', ' I attest, under penalty of perjury, that (1) I have examined the document(s) presented by the above-named employee, (2) the above-listed document(s) appear to be genuine and to relate to the employee named, and (3) to the best of my knowledge the employee is authorized to work in the United States.'),
+          m('strong', { class: 'f6' }, 'Certification: I attest, under penalty of perjury, that (1) I have examined the document(s) presented by the above-named employee, (2) the above-listed document(s) appear to be genuine and to relate to the employee named, and (3) to the best of my knowledge the employee is authorized to work in the United States.'),
           m('p', [
-            m('strong', `The employee's first day of employment: `),
+            m('strong',  { class: 'f6 pr2' }, `The employee's first day of employment: `),
             m('span',
               m(
                 'input',
@@ -750,58 +794,59 @@
   const EmployerInfo = {
     view(vnode) {
       const i9Form = vnode.attrs;
-      return m('div', { class: 'measure' }, [
-        m('h2', 'Employer Info'),
+      return m('div', { class: sectionClass }, [
+        m('strong', { class: titleClass }, 'Employer Info'),
 
-        m('label', { for: 'todays-date' }, `Today's Date:`),
-        m('input', {
-          name: 'todaysDate',
-          id: 'todays-date',
-          value: i9Form.todaysDate,
-          type: 'date'
-        })
-      ].concat(
-        makeLabelInputPair({
-          id: 'employerTitle',
-          labelText: 'Title of Employer or Authorized Representative',
-          initialValue: i9Form.employerTitle
-        }),
-        makeLabelInputPair({
-          id: 'employerLastName',
-          labelText: 'Employer Last Name',
-          initialValue: i9Form.employerLastName
-        }),
-        makeLabelInputPair({
-          id: 'employerFirstName',
-          labelText: 'Employer First Name',
-          initialValue: i9Form.employerFirstName
-        }),
-        makeLabelInputPair({
-          id: 'employerName',
-          labelText: `Employer's Business or Organization Name`,
-          initialValue: i9Form.employerName
-        }),
-        makeLabelInputPair({
-          id: 'employerAddress',
-          labelText: `Employer's Business or Organization Address (Street Number and Name)`,
-          initialValue: i9Form.employerAddress
-        }),
-        makeLabelInputPair({
-          id: 'employerCity',
-          labelText: 'City or Town',
-          initialValue: i9Form.employerCity
-        }),
-        makeLabelInputPair({
-          id: 'employerState',
-          labelText: 'State',
-          initialValue: i9Form.employerState
-        }),
-        makeLabelInputPair({
-          id: 'employerZipCode',
-          labelText: 'ZIP Code',
-          initialValue: i9Form.employerZipCode
-        })
-      ))
+        m('div', { class: 'measure' }, [
+          m('label', { for: 'todays-date', class: 'pr2' }, `Today's Date:`),
+          m('input', {
+            name: 'todaysDate',
+            id: 'todays-date',
+            value: i9Form.todaysDate,
+            type: 'date'
+          }),
+          ...makeLabelInputPair({
+            id: 'employerTitle',
+            labelText: 'Title of Employer or Authorized Representative',
+            initialValue: i9Form.employerTitle
+          }),
+          ...makeLabelInputPair({
+            id: 'employerLastName',
+            labelText: 'Employer Last Name',
+            initialValue: i9Form.employerLastName
+          }),
+          ...makeLabelInputPair({
+            id: 'employerFirstName',
+            labelText: 'Employer First Name',
+            initialValue: i9Form.employerFirstName
+          }),
+          ...makeLabelInputPair({
+            id: 'employerName',
+            labelText: `Employer's Business or Organization Name`,
+            initialValue: i9Form.employerName
+          }),
+          ...makeLabelInputPair({
+            id: 'employerAddress',
+            labelText: `Employer's Business or Organization Address (Street Number and Name)`,
+            initialValue: i9Form.employerAddress
+          }),
+          ...makeLabelInputPair({
+            id: 'employerCity',
+            labelText: 'City or Town',
+            initialValue: i9Form.employerCity
+          }),
+          ...makeLabelInputPair({
+            id: 'employerState',
+            labelText: 'State',
+            initialValue: i9Form.employerState
+          }),
+          ...makeLabelInputPair({
+            id: 'employerZipCode',
+            labelText: 'ZIP Code',
+            initialValue: i9Form.employerZipCode
+          })
+        ])
+      ])
     }
   };
 
@@ -890,12 +935,6 @@
             m(Header),
             m(Section1Info, i9Form),
             m(DocumentSelect, i9Form),
-
-            documentTypeId === ListBCDocumentTypeId
-            ? m(ListBAndCDocumentInfo, i9Form)
-            : m(ListADocumentInfo, i9Form),
-
-            m(AdditionalInformation, i9Form),
             m(Certification, i9Form),
             m(EmployerInfo, i9Form)
           ]));

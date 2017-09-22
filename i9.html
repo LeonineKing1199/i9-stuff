@@ -13,12 +13,15 @@
       document.addEventListener('DOMContentLoaded', () => {
         const i9 = new I9Section2({
           firstName: 'John',
-          lastName:  'Doe'
+          lastName:  'Doe',
+          citizenshipStatusCode: 4,
+          documentTypeId: 28,
+          listBDocumentTypeId: 1,
+          listCDocumentTypeId: 13
         });
 
         document
-          .body
-          .classList
+          .body.classList
           .add(
             'ml6',
             'mr6',
