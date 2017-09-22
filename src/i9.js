@@ -488,7 +488,7 @@
   };
 
   const Header = {
-    view(vnode) {
+    view() {
       return (
         m(
           'div',
@@ -881,6 +881,8 @@
 
     console.log(key);
 
+    console.log(Object.keys(i9FormData));
+
     i9FormData[key] = event.target.value;
 
     // TODO: refactor this behavior using proxies or something
@@ -933,10 +935,10 @@
           },
           [
             m(Header),
-            m(Section1Info, i9Form),
+            m(Section1Info,   i9Form),
             m(DocumentSelect, i9Form),
-            m(Certification, i9Form),
-            m(EmployerInfo, i9Form)
+            m(Certification,  i9Form),
+            m(EmployerInfo,   i9Form)
           ]));
     }
   };
