@@ -885,19 +885,23 @@
       vnode.attrs.signaturePad = pad;
     },
     view(vnode) {
-      return m('div', { class: 'pb3 overflow-auto' },
+      return m('div', { class: 'pb3' },
       [
         m('div', { class: 'fl w-100 f6 b pb2' }, 'Signature of Employer or Authorized Representative'),
         m('canvas', { class: 'ba bw1' }),
         m('div', { class: 'fl w-100' },
         [
-          m('button', {
-            onclick: (event) => {
-              event.stopPropagation();
-              vnode.attrs.signaturePad.clear();
-              return false;
-            }
-          }, 'Reset Signature')
+          m(
+            'button',
+            {
+              class: 'mb3 b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib',
+
+              onclick: (event) => {
+                vnode.attrs.signaturePad.clear();
+                return false;
+              }
+            },
+            'Reset Signature')
         ])
       ]);
     }
