@@ -473,7 +473,7 @@
     }
   ];
 
-  const makeLabelInputPair  = ({ id, labelText, initialValue, opts = {} }) => {
+  const makeLabelInputPair  = ({ id, labelText, initialValue, opts = {} } = {}) => {
     return [
       m('label', { for: id, class: 'f6 b db mb2' }, labelText),
       m('input', {
@@ -735,7 +735,7 @@
             m('div', { class: '' },
             [
               listBDocInputs.length > 0
-              ? m('strong', { class: 'f5' }, 'List B Document Information', listBDocInputs)
+              ? m('strong', { class: 'f5 pb2' }, 'List B Document Information', listBDocInputs)
               : null
             ]),
             m('div', { class: 'pt3 pb3' },
@@ -794,53 +794,80 @@
   const EmployerInfo = {
     view(vnode) {
       const i9Form = vnode.attrs;
-      return m('div', { class: sectionClass }, [
+
+      const labelClass = 'fl w-20 pa2';
+      const inputClass = 'fl w-80 pa2';
+
+      const toGridRow = ([first, second]) => {
+        return [
+          m('div', { class: 'fl w-100' }, [
+            m('div', { class: labelClass }, first),
+            m('div', { class: inputClass }, second)
+          ])
+        ];
+      };
+
+      const inputToRow = (data) => toGridRow(makeLabelInputPair(data));
+
+      return m('div', { class: `${sectionClass} overflow-auto` }, [
         m('strong', { class: titleClass }, 'Employer Info'),
 
-        m('div', { class: 'measure' }, [
-          m('label', { for: 'todays-date', class: 'pr2' }, `Today's Date:`),
-          m('input', {
-            name: 'todaysDate',
-            id: 'todays-date',
-            value: i9Form.todaysDate,
-            type: 'date'
-          }),
-          ...makeLabelInputPair({
+        m('div', { class: '' }, [
+
+          m('div', { class: 'fl w-100' }, [
+            m('div', { class: labelClass }, m('label', { for: 'todays-date', class: 'pr2' }, `Today's Date:`),),
+            m('div', { class: inputClass },
+              m('input', {
+                name: 'todaysDate',
+                id: 'todays-date',
+                value: i9Form.todaysDate,
+                type: 'date'
+              })),
+          ]),
+
+          ...inputToRow({
             id: 'employerTitle',
             labelText: 'Title of Employer or Authorized Representative',
             initialValue: i9Form.employerTitle
           }),
-          ...makeLabelInputPair({
+
+          ...inputToRow({
             id: 'employerLastName',
             labelText: 'Employer Last Name',
             initialValue: i9Form.employerLastName
           }),
-          ...makeLabelInputPair({
+
+          ...inputToRow({
             id: 'employerFirstName',
             labelText: 'Employer First Name',
             initialValue: i9Form.employerFirstName
           }),
-          ...makeLabelInputPair({
+
+          ...inputToRow({
             id: 'employerName',
             labelText: `Employer's Business or Organization Name`,
             initialValue: i9Form.employerName
           }),
-          ...makeLabelInputPair({
+
+          ...inputToRow({
             id: 'employerAddress',
             labelText: `Employer's Business or Organization Address (Street Number and Name)`,
             initialValue: i9Form.employerAddress
           }),
-          ...makeLabelInputPair({
+
+          ...inputToRow({
             id: 'employerCity',
             labelText: 'City or Town',
             initialValue: i9Form.employerCity
           }),
-          ...makeLabelInputPair({
+
+          ...inputToRow({
             id: 'employerState',
             labelText: 'State',
             initialValue: i9Form.employerState
           }),
-          ...makeLabelInputPair({
+
+          ...inputToRow({
             id: 'employerZipCode',
             labelText: 'ZIP Code',
             initialValue: i9Form.employerZipCode
@@ -850,38 +877,48 @@
     }
   };
 
-  // const SubmitButton = (i9Form) => ({
-  //   view() {
-  //     const submitSection2 = (event) => {
-  //       event.preventDefault();
-  //       // m.request({
-  //       //   method: 'POST',
-  //       //   url: `/i9`,
-  //       //   data: i9Form
-  //       // }).then((resBody) => {
-  //       //   console.log(resBody);
-  //       // })
-  //       console.log(`Someday we're going to submit the following data:`);
-  //       console.log(i9Form);
-  //     };
+  const SignaturePad = {
+    oncreate(vnode) {
+      const { dom } = vnode;
+      const pad     = new window.SignaturePad(dom.querySelector('canvas'));
 
-  //     return (
-  //       m('div',
-  //         m('input', {
-  //           type: 'submit',
-  //           class: 'b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib',
-  //           value: 'Submit Section 2',
-  //           onclick: submitSection2
-  //         })));
-  //   }
-  // });
+      vnode.attrs.signaturePad = pad;
+    },
+    view(vnode) {
+      return m('div', { class: 'pb3 overflow-auto' },
+      [
+        m('div', { class: 'fl w-100 f6 b pb2' }, 'Signature of Employer or Authorized Representative'),
+        m('canvas', { class: 'ba bw1' }),
+        m('div', { class: 'fl w-100' },
+        [
+          m('button', {
+            onclick: (event) => {
+              event.stopPropagation();
+              vnode.attrs.signaturePad.clear();
+              return false;
+            }
+          }, 'Reset Signature')
+        ])
+      ]);
+    }
+  };
+
+  const SubmitButton = {
+    view() {
+      return (
+        m('div',
+          m('input', {
+            type: 'submit',
+            class: 'b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib',
+            value: 'Submit Section 2'
+          })));
+    }
+  };
 
   const onFormChange = (i9FormData) => (event) => {
     const key  = event.target.name;
 
     console.log(key);
-
-    console.log(Object.keys(i9FormData));
 
     i9FormData[key] = event.target.value;
 
@@ -922,6 +959,42 @@
     employerZipCode:        ''
   };
 
+  const i9FormToJSON = (i9Form) => {
+    const keys = Object
+      .keys(I9FormDefaults)
+      .concat(
+        [...ListADocumentData, ...ListBDocumentData, ...ListCDocumentData]
+          .reduce(
+            (keys, { inputs = [] }) => {
+              const newKeys = inputs.map(({ formField }) => {
+                return formField;
+              });
+              return keys.concat(newKeys);
+            },
+            []));
+
+    const data = keys.reduce(
+      (obj, key) => {
+        if (i9Form[key] !== undefined && i9Form[key] !== '') {
+          obj[key] = i9Form[key];
+        }
+        return obj;
+      },
+      {});
+
+    data.signatureData = i9Form.signaturePad.toDataURL();
+    return data;
+  };
+
+  const SubmitForm = (i9Form) => (event) => {
+    event.preventDefault();
+    const json = i9FormToJSON(i9Form);
+
+    // right now just console log the form data
+    // this will someday do something real
+    console.log(json);
+  };
+
   const I9Form = {
     view(vnode) {
       const i9Form         = vnode.attrs;
@@ -931,14 +1004,18 @@
           'form',
           {
             autocomplete: 'off',
-            onchange: onFormChange(i9Form)
+            onchange: onFormChange(i9Form),
+            onsubmit: SubmitForm(i9Form),
+            class: 'pb4'
           },
           [
             m(Header),
             m(Section1Info,   i9Form),
             m(DocumentSelect, i9Form),
             m(Certification,  i9Form),
-            m(EmployerInfo,   i9Form)
+            m(SignaturePad,   i9Form),
+            m(EmployerInfo,   i9Form),
+            m(SubmitButton)
           ]));
     }
   };
@@ -953,16 +1030,25 @@
 
     mount(element) {
       this.element = element;
+
+      const i9       = this;
       const formData = this.formData;
+
       m.mount(element, {
         view() {
           return m(I9Form, formData);
         }
       });
+
+      Object.freeze(this);
     }
 
     unmount() {
       m.mount(this.element, null);
+    }
+
+    toJSON() {
+      return i9FormToJSON(this.formData);
     }
   }
 
