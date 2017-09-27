@@ -11,119 +11,39 @@
 
   const ListADocumentData = [
     {
-      documentTypeId: 13,
+      id: 1,
+      citizenshipStatusCodes: [4, 5],
+      label: 'U.S. Passport or Passport Card'
+    },
+
+    {
+      id: 2,
       citizenshipStatusCodes: [6],
-      label: 'Permanent Resident Card (I-551)',
-      inputs: [
-        {
-          label: 'Green Card Number',
-          formField: 'cardNumber'
-        },
-        {
-          label: 'Alien Number / USCIS Number',
-          formField: 'alienNumber'
-        },
-        {
-          label: 'Issuing Authority',
-          formField: 'permanentResidentCardIssuingAuthority'
-        }
-      ]
+      label: 'Permanent Resident Card (I-551)'
     },
 
     {
-      documentTypeId: 17,
-      citizenshipStatusCodes: [7],
-      label: 'Employment Authorization Document (I-776)',
-      inputs: [
-        {
-          label: 'Card Number',
-          formField: 'cardNumber'
-        },
-        {
-          label: 'Alien Number / USCIS Number',
-          formField: 'alienNumber'
-        },
-        {
-          label: 'Issuing Authority',
-          formField: 'i776IssuingAuthority'
-        },
-        {
-          label: 'Expiration Date (mm/dd/yyyy)',
-          formField: 'documentExpirationDate'
-        }
-      ]
-    },
-
-    {
-      documentTypeId: 24,
-      citizenshipStatusCodes: [7],
-      label: 'Foreign Passport with I-94/I-94A',
-      inputs: [
-        {
-          label: 'Passport Number',
-          formField: 'passportNumber'
-        },
-        {
-          label: 'Expiration Date (optional) (mm/dd/yyyy)',
-          formField: 'documentExpirationDate'
-        },
-        {
-          label: 'Country of Issuance Code',
-          formField: 'countryOfIssuanceCode'
-        },
-        {
-          label: 'I-94 Number',
-          formField: 'i94Number'
-        },
-        {
-          label: 'Visa Number (optional)',
-          formField: 'visaNumber'
-        }
-      ]
-    },
-
-    {
-      documentTypeId: 25,
+      id: 3,
       citizenshipStatusCodes: [6],
       label: 'Foreign Passport With I-551 Stamp or MRIV',
-      inputs: [
-        {
-          label: 'Passport Number',
-          formField: 'passportNumber'
-        },
-        {
-          label: 'Issuing Authority',
-          formField: 'i551StampIssuingAuthority'
-        },
-        {
-          label: 'Expiration Date (optional) (mm/dd/yyyy)',
-          formField: 'documentExpirationDate'
-        },
-        {
-          label: 'Alien Number',
-          formField: 'alienNumber'
-        }
-      ]
     },
 
     {
-      documentTypeId: 29,
-      citizenshipStatusCodes: [4, 5],
-      label: 'U.S. Passport or Passport Card',
-      inputs: [
-        {
-          label: 'Passport Number',
-          formField: 'passportNumber'
-        },
-        {
-          label: 'Expiration Date (mm/dd/yyyy)',
-          formField: 'documentExpirationDate'
-        },
-        {
-          label: 'Issuing Authority',
-          formField: 'usPassportIssuingAuthority'
-        }
-      ]
+      id: 4,
+      citizenshipStatusCodes: [7],
+      label: 'Employment Authorization Document (I-776)'
+    },
+
+    {
+      id: 5,
+      citizenshipStatusCodes: [7],
+      label: 'Foreign Passport with I-94/I-94A'
+    },
+
+    {
+      id: 6,
+      citizenshipStatusCodes: [4, 5, 6, 7],
+      label: 'Passport from the Federated States of Micronesia (FSM) or the Republic of the Marshall Islands (RMI)'
     }
   ];
 
@@ -473,6 +393,7 @@
     }
   ];
 
+
   const makeLabelInputPair  = ({ id, labelText, initialValue, opts = {} } = {}) => {
     return [
       m('label', { for: id, class: 'f6 b db mb2' }, labelText),
@@ -632,35 +553,51 @@
           ]));
       }
 
-      const listADocs = generateDocumentSelectOptions(citizenshipStatusCode, documentTypeId, ListADocumentData);
+      // const listADocs = generateDocumentSelectOptions(citizenshipStatusCode, documentTypeId, ListADocumentData);
 
       return (
-        m('div', { class: sectionClass }, [
-          m('strong', { class: 'f5'}, 'Identity and Employment Authorization'),
-          m('p', 'The employee presented me with:'),
+        m('div', { class: `${sectionClass} overflow-auto` }, [
+          m('strong', { class: titleClass }, 'Identity and Employment Authorization'),
+          m('p', 'All documents must be UNEXPIRED'),
+          m('p', 'Employees may present one selection from List A or a combination of one selection from List B and one selection from List C.'),
 
-          m('select', { name: 'documentTypeId', class: 'mb3' }, [
-            m('option', { selected: -1 === documentTypeId, disabled: true, value: -1 }, 'Please select a document'),
-            ...listADocs,
-            m(
-              'option',
-              {
-                selected: documentTypeId === ListBCDocumentTypeId,
-                value: ListBCDocumentTypeId
-              },
-              'List B and C Documents')
-          ]),
+          m('div', { class: 'fl w-100' }, [
+            m('label', { class: 'f6 b fl w-20' }, 'List A Document'),
+            m('select', { class: 'fl w-40', name: 'documentTypeId' }, [
+              m('option', { selected: true, disabled: true, value: -1 }, 'Please select a document'),
+              ...ListADocumentData.map(({ label }, idx) => m('option', `${(idx + 1)}. ${label}`))
+            ]),
 
-          documentTypeId === ListBCDocumentTypeId
-          ? m(ListBAndCDocumentSelect, i9Form)
-          : null,
-
-          documentTypeId === ListBCDocumentTypeId
-          ? m(ListBAndCDocumentInfo, i9Form)
-          : m(ListADocumentInfo, i9Form),
-
-          m(AdditionalInformation, i9Form),
+          ])
         ]));
+
+      // return (
+      //   m('div', { class: sectionClass }, [
+      //     m('strong', { class: 'f5'}, 'Identity and Employment Authorization'),
+      //     m('p', 'The employee presented me with:'),
+
+      //     m('select', { name: 'documentTypeId', class: 'mb3' }, [
+      //       m('option', { selected: -1 === documentTypeId, disabled: true, value: -1 }, 'Please select a document'),
+      //       ...listADocs,
+      //       m(
+      //         'option',
+      //         {
+      //           selected: documentTypeId === ListBCDocumentTypeId,
+      //           value: ListBCDocumentTypeId
+      //         },
+      //         'List B and C Documents')
+      //     ]),
+
+      //     documentTypeId === ListBCDocumentTypeId
+      //     ? m(ListBAndCDocumentSelect, i9Form)
+      //     : null,
+
+      //     documentTypeId === ListBCDocumentTypeId
+      //     ? m(ListBAndCDocumentInfo, i9Form)
+      //     : m(ListADocumentInfo, i9Form),
+
+      //     m(AdditionalInformation, i9Form),
+      //   ]));
     }
   };
 

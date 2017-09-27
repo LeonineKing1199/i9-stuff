@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+    <style>
+      .ww {
+        word-wrap: break-word;
+      }
+    </style>
+  </head>
+  <body class="mt4 mh5 system-sans-serif">
+
+    <!-- Header section -->
+    <div class="fl w-100 overflow-auto pb2 bb bw3">
+      <div class="fl w-10 mt3">
+          <img src="./dhs-logo.png" alt="DHS Logo" width="72px;">
+      </div>
+
+      <div class="fl w-70 tc">
+          <h1 class="f4 nb2">Employment Eligibility Verification</h1>
+          <h2 class="f5 nb3">Department of Homeland Security</h2>
+          <p>U.S. Citizenship and Immigration Services</p>
+      </div>
+
+      <div class="fl w-20 tc">
+          <h2 class="f5 b nb1 pb2">USCIS</h2>
+          <h2 class="f5 b nt1 mb0">Form I-9</h2>
+          <span class="f6">OMB No. 1615-0047</span>
+          <span class="f6">Expires 08/31/2019</span>
+      </div>
+    </div>
+
+    <!-- Start here notice -->
+    <div class="fl w-100 overflow-auto mt1 bt pt2">
+      <div class="fl mb2">
+          <span><img src="./right-facing-triangle.png" alt="" width="17px;"></span>
+          <span class="b f6">START HERE:</span>
+          <span class="b f7">Read instructions carefully before completing this form. The instructions must be available, either in paper or electronically, during completion of this form. Employers are liable for errors in the completion of this form.</span>
+      </div>
+
+      <p class="f6">
+        <strong>ANTI-DISCRIMINATION NOTICE:</strong> It is illegal to discriminate against work-authorized individuals. Employers <strong>CANNOT</strong> specify which document(s) an employee may present to establish employment authorization and identity. The refusal to hire or continue to employ an individual because the documentation presented has a future expiration date may also constitute illegal discrimination.</p>
+    </div>
+
+
+    <!-- Section 1 Start -->
+    <div class="fl w-100 overflow-auto ba bw1 mt0">
+
+      <div class="fl w-100 overflow-auto bg-black-20 pr2 pb2 bb bw1">
+        <span class="b f5">Section 1. Employee Information and Attestation</span>
+        <span class="f6 i"> (Employees must complete and sign Section 1 of Form I-9 no later than the first day of employment, but not before accepting a job offer.</span>
+      </div>
+
+      <div class="fl w-100 overflow-auto">
+
+        <div class="fl w-30 br bw1 pb2 pl2 pt1">
+          <div class="fl w-100 pb2">
+              <span class="f6">Last Name <em>(Family Name)</em></span>
+          </div>
+          <div class="fl w-100">
+            <span class="f5 ww">{{LastName}}</span>
+          </div>
+        </div>
+
+        <div class="fl w-30 br bw1 pb2 pl2 pt1">
+          <div class="fl w-100 pb2">
+            <span class="f6">First Name <em>(Given Name)</em></span>
+          </div>
+          <div class="fl w-100">
+              <span class="f5 ww">{{FirstName}}</span>
+            </div>
+        </div>
+
+        <div class="fl w-10 br bw1 pb2 pl2 pt1">
+            <div class="fl w-100 pb2">
+              <span class="f7 ww">Middle Initial</span>
+            </div>
+            <div class="fl w-100">
+              <span class="f5 ww">A</span>
+            </div>
+        </div>
+
+        <div class="fl w-30 br bw1 pb2 pl2 pt1">
+            <div class="fl w-100 pb2">
+                <span class="f6 ww">Other Names Used <em>(if any)</em></span>
+              </div>
+              <div class="fl w-100">
+                <span class="f5 ww">{{OtherNamesUsed}}</span>
+              </div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
