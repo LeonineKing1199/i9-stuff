@@ -7,90 +7,305 @@
       .ww {
         word-wrap: break-word;
       }
+
+      .w-15 {
+        width: 15%;
+      }
+
+      .w-35 {
+        width: 35%;
+      }
+
+      .page {
+        height: 11in;
+        width: 8.5in;
+
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .bw08 {
+        border-width: .08rem;
+      }
+
+      .unset {
+        box-sizing: unset;
+      }
+
     </style>
   </head>
-  <body class="mt4 mh5 system-sans-serif">
+  <body class="mt4 system-sans-serif">
 
-    <!-- Header section -->
-    <div class="fl w-100 overflow-auto pb2 bb bw3">
-      <div class="fl w-10 mt3">
-          <img src="./dhs-logo.png" alt="DHS Logo" width="72px;">
-      </div>
-
-      <div class="fl w-70 tc">
-          <h1 class="f4 nb2">Employment Eligibility Verification</h1>
-          <h2 class="f5 nb3">Department of Homeland Security</h2>
-          <p>U.S. Citizenship and Immigration Services</p>
-      </div>
-
-      <div class="fl w-20 tc">
-          <h2 class="f5 b nb1 pb2">USCIS</h2>
-          <h2 class="f5 b nt1 mb0">Form I-9</h2>
-          <span class="f6">OMB No. 1615-0047</span>
-          <span class="f6">Expires 08/31/2019</span>
-      </div>
-    </div>
-
-    <!-- Start here notice -->
-    <div class="fl w-100 overflow-auto mt1 bt pt2">
-      <div class="fl mb2">
-          <span><img src="./right-facing-triangle.png" alt="" width="17px;"></span>
-          <span class="b f6">START HERE:</span>
-          <span class="b f7">Read instructions carefully before completing this form. The instructions must be available, either in paper or electronically, during completion of this form. Employers are liable for errors in the completion of this form.</span>
-      </div>
-
-      <p class="f6">
-        <strong>ANTI-DISCRIMINATION NOTICE:</strong> It is illegal to discriminate against work-authorized individuals. Employers <strong>CANNOT</strong> specify which document(s) an employee may present to establish employment authorization and identity. The refusal to hire or continue to employ an individual because the documentation presented has a future expiration date may also constitute illegal discrimination.</p>
-    </div>
-
-
-    <!-- Section 1 Start -->
-    <div class="fl w-100 overflow-auto ba bw1 mt0">
-
-      <div class="fl w-100 overflow-auto bg-black-20 pr2 pb2 bb bw1">
-        <span class="b f5">Section 1. Employee Information and Attestation</span>
-        <span class="f6 i"> (Employees must complete and sign Section 1 of Form I-9 no later than the first day of employment, but not before accepting a job offer.</span>
-      </div>
-
-      <div class="fl w-100 overflow-auto">
-
-        <div class="fl w-30 br bw1 pb2 pl2 pt1">
-          <div class="fl w-100 pb2">
-              <span class="f6">Last Name <em>(Family Name)</em></span>
-          </div>
-          <div class="fl w-100">
-            <span class="f5 ww">{{LastName}}</span>
-          </div>
+    <div class="page">
+      <!-- Header section -->
+      <div class="fl w-100 overflow-auto pb2 bb bw3">
+        <div class="fl w-10 mt3">
+            <img src="./dhs-logo.png" alt="DHS Logo" width="72px;">
         </div>
 
-        <div class="fl w-30 br bw1 pb2 pl2 pt1">
-          <div class="fl w-100 pb2">
-            <span class="f6">First Name <em>(Given Name)</em></span>
-          </div>
-          <div class="fl w-100">
-              <span class="f5 ww">{{FirstName}}</span>
-            </div>
+        <div class="fl w-70 tc">
+            <h1 class="f4 nb2">Employment Eligibility Verification</h1>
+            <h2 class="f5 nb3">Department of Homeland Security</h2>
+            <p>U.S. Citizenship and Immigration Services</p>
         </div>
 
-        <div class="fl w-10 br bw1 pb2 pl2 pt1">
+        <div class="fl w-20 tc">
+            <h2 class="f5 b nb1 pb2">USCIS</h2>
+            <h2 class="f5 b nt1 mb0">Form I-9</h2>
+            <span class="f6">OMB No. 1615-0047</span>
+            <br>
+            <span class="f6">Expires 08/31/2019</span>
+        </div>
+      </div>
+
+      <!-- Start here notice -->
+      <div class="fl w-100 overflow-auto mt1 bt pt2">
+        <div class="fl mb2">
+            <span><img src="./right-facing-triangle.png" alt="" width="17px;"></span>
+            <span class="b f6">START HERE:</span>
+            <span class="b f7">Read instructions carefully before completing this form. The instructions must be available, either in paper or electronically, during completion of this form. Employers are liable for errors in the completion of this form.</span>
+        </div>
+
+        <p class="f6">
+          <strong>ANTI-DISCRIMINATION NOTICE:</strong> It is illegal to discriminate against work-authorized individuals. Employers <strong>CANNOT</strong> specify which document(s) an employee may present to establish employment authorization and identity. The refusal to hire or continue to employ an individual because the documentation presented has a future expiration date may also constitute illegal discrimination.</p>
+      </div>
+
+
+      <!-- Section 1 Start -->
+      <div class="fl w-100 overflow-hidden ba bw08 mt0">
+
+        <div class="fl w-100 bg-black-20 pr2 pb2 bb bw08">
+          <span class="b f5">Section 1. Employee Information and Attestation</span>
+          <span class="f6 i"> (Employees must complete and sign Section 1 of Form I-9 no later than the <strong>first day of employment</strong>, but not before accepting a job offer.)</span>
+        </div>
+
+        <div class="fl w-100">
+
+          <div class="fl w-30 br bw08 pb2 pl2 pt1">
             <div class="fl w-100 pb2">
-              <span class="f7 ww">Middle Initial</span>
+                <span class="f6">Last Name <em>(Family Name)</em></span>
             </div>
             <div class="fl w-100">
-              <span class="f5 ww">A</span>
+              <span class="f5 ww">{{LastName}}</span>
+            </div>
+          </div>
+
+          <div class="fl w-30 br bw08 pb2 pl2 pt1">
+            <div class="fl w-100 pb2">
+              <span class="f6">First Name <em>(Given Name)</em></span>
+            </div>
+            <div class="fl w-100">
+                <span class="f5 ww">{{FirstName}}</span>
+              </div>
+          </div>
+
+          <div class="fl w-10 br bw08 pb2 pl2 pt1">
+              <div class="fl w-100 pb2">
+                <span class="f7 ww">Middle Initial</span>
+              </div>
+              <div class="fl w-100">
+                <span class="f5 ww">A</span>
+              </div>
+          </div>
+
+          <div class="fl w-30 pb2 pl2 pt1">
+              <div class="fl w-100 pb2">
+                  <span class="f6 ww">Other Names Used <em>(if any)</em></span>
+                </div>
+                <div class="fl w-100">
+                  <span class="f5 ww">{{OtherNamesUsed}}</span>
+                </div>
+          </div>
+        </div>
+
+        <div class="fl w-100 bt bw08">
+
+            <div class="fl w-35 br bw08 pb2 pl2 pt1">
+                <div class="fl w-100 pb2">
+                    <span class="f6 ww">Address <em>(Street Number and Name)</em></span>
+                  </div>
+                  <div class="fl w-100">
+                    <span class="f5 ww">{{Address}}</span>
+                  </div>
+            </div>
+
+            <div class="fl w-15 br bw08 pb2 pl2 pt1">
+                <div class="fl w-100 pb2">
+                    <span class="f6 ww">Apt. Number</span>
+                  </div>
+                  <div class="fl w-100">
+                    <span class="f5 ww">{{AptNumber}}</span>
+                  </div>
+            </div>
+
+            <div class="fl w-25 br bw08 pb2 pl2 pt1">
+                <div class="fl w-100 pb2">
+                    <span class="f6 ww">City or Town</span>
+                  </div>
+                  <div class="fl w-100">
+                    <span class="f5 ww">{{City}}</span>
+                  </div>
+            </div>
+
+            <div class="fl w-10 br bw08 pb2 pl2 pt1">
+                <div class="fl w-100 pb2">
+                    <span class="f6 ww">State</span>
+                  </div>
+                  <div class="fl w-100">
+                    <span class="f5 ww">{{State}}</span>
+                  </div>
+            </div>
+
+            <div class="fl w-15 pb2 pl2 pt1">
+                <div class="fl w-100 pb2">
+                    <span class="f6 ww">Zip Code</span>
+                  </div>
+                  <div class="fl w-100">
+                    <span class="f5 ww">{{ZipCode}}</span>
+                  </div>
+            </div>
+
+        </div>
+
+        <div class="fl w-100 bt bw08">
+            <div class="fl w-25 br bw08 pb2 pl2 pt1">
+                <div class="fl w-100 pb2">
+                    <span class="f6 ww">Date of Birth <em>(mm/dd/yyyy)</em></span>
+                  </div>
+                  <div class="fl w-100">
+                    <span class="f5 ww">{{DateOfBirth}}</span>
+                  </div>
+            </div>
+
+            <div class="fl w-25 br bw08 pb2 pl2 pt1">
+                <div class="fl w-100 pb2">
+                    <span class="f6 ww">U.S. Social Security Number</span>
+                  </div>
+                  <div class="fl w-100">
+                    <span class="f5 ww">{{SSN}}</span>
+                  </div>
+            </div>
+
+            <div class="fl w-25 br bw08 pb2 pl2 pt1">
+                <div class="fl w-100 pb2">
+                    <span class="f6 ww">Employee's E-mail Address</span>
+                  </div>
+                  <div class="fl w-100">
+                    <span class="f5 ww">{{EmailAddress}}</span>
+                  </div>
+            </div>
+
+            <div class="fl w-25 pb2 pl2 pt1">
+                <div class="fl w-100 pb2">
+                    <span class="f6 ww">Employee's Telephone Number</span>
+                  </div>
+                  <div class="fl w-100">
+                    <span class="f5 ww">{{PhoneNumber}}</span>
+                  </div>
             </div>
         </div>
 
-        <div class="fl w-30 br bw1 pb2 pl2 pt1">
-            <div class="fl w-100 pb2">
-                <span class="f6 ww">Other Names Used <em>(if any)</em></span>
-              </div>
-              <div class="fl w-100">
-                <span class="f5 ww">{{OtherNamesUsed}}</span>
-              </div>
+      </div>
+
+
+      <div class="fl w-100">
+        <p class="b f6">I am aware that federal law provides for imprisonment and/or fines for false statements or use of false documents in connection with the completion of this form.</p>
+        <p class="b f6">I attest, under penalty of perjury, that I am (check one of the following boxes):</p>
+      </div>
+
+      <div class="fl w-100 ba bw08 mt0">
+        <div class="fl w-100 bb bw08 pt1 pb1">
+          <input class="ml1 mr1" type="checkbox" disabled>
+          <span class="f7">1. A citizen of the United States</span>
         </div>
 
+        <div class="fl w-100 bb bw08 pt1 pb1">
+          <input class="ml1 mr1" type="checkbox" disabled>
+          <span class="f7">2. A noncitizen national of the United States <em>(See instructions)</em></span>
+        </div>
+
+          <div class="fl w-100 pt1 pb1">
+            <input class="ml1 mr1" type="checkbox" disabled>
+            <span class="f7 mr2">3. A lawful permanent resident</span>
+            <span class="f7">(Alien Registration Number/USCIS Number):</span>
+            <span class="bb mb1">{{AlienNumber}}</span>
+          </div>
       </div>
+
+      <div class="fl w-100">
+        <div class="fl w-75 bb br bl bw08">
+            <div class="fl w-100 mb1">
+              <input class="ml1 mr1" type="checkbox" disabled>
+              <span class="f7">4. An alien authorized to work until (expiration date, if applicable, mm/dd/yyyy):</span>
+              <span class="ml3 mb1 bb bw08">00/00/0000</span>
+            </div>
+
+            <div class="fl w-100">
+              <span class="f7 pl4">Some aliens may write "N/A" in the expiration date field <em>(See instructions)</em></span>
+            </div>
+
+            <div class="fl w-100 pt2">
+              <span class="pl3 f7 i">Aliens authorized to work must provide only one of the following document numbers to complete Form I-9:</span>
+            </div>
+
+            <div class="fl w-100">
+              <span class="pl3 f7 i">An Alien Registration Number/USCIS Number OR Form I-94 Admission Number OR Foreign Passport Number.</span>
+            </div>
+
+            <div class="fl w-80 pt3">
+              <span class="f7 pl3"><strong>1.</strong> Alien Registration Number/USCIS Number:</span>
+              <span class="fr pl4 bb bw08">{{AlienNumber}}</span>
+              <br>
+              <span class="f5 b pl6">OR</span>
+            </div>
+
+            <div class="fl w-80">
+              <span class="f7 pl3"><strong>2.</strong>  Form I-94 Admission Number:</span>
+              <span class="fr pl4 bb bw08">{{I94Number}}</span>
+              <br>
+              <span class="f5 b pl6">OR</span>
+            </div>
+
+            <div class="fl w-80 pt3">
+              <span class="f7 pl3"><strong>3.</strong> Foreign Passport Number:</span>
+              <span class="fr pl4 bb bw08">{{PassportNumber}}</span>
+            </div>
+
+            <div class="fl w-80 pt3 pb3">
+              <span class="f7 pl4">Country of Issuance</span>
+              <span class="fr pl4 bb bw08">{{CountryOfIssuance}}</span>
+            </div>
+
+        </div>
+
+        <div class="fr w-20 ba bw08 ml3 mt5 f7 tc unset" style="height: 190px;">
+          <span>QR Code - Section 1</span>
+          <br>
+          <span>Do Not Write In This Space</span>
+        </div>
+      </div>
+
+      <!-- Signature Section -->
+      <div class="fl w-100 ba bw08 mt1">
+        <div class="fl w-70 br bw08">
+          <div class="fl w-100">
+              <span class="f7">Signature of Employee</span>
+          </div>
+          <div class="fl w-100 pt2">
+              <span>{{Signature}}</span>
+          </div>
+        </div>
+
+        <div class="fl w-30">
+          <div class="fl w-100">
+              <span class="f7">Today's Date <em>(mm/dd/yyyy)</em></span>
+          </div>
+          <div class="fl w-100 pt2">
+              <span class="pt1">{{SignDate}}</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </body>
 </html>
