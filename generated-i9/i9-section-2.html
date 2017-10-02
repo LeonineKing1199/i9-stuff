@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+    <style>
+      .ww {
+        word-wrap: break-word;
+      }
+
+      .w-05 {
+        width: 5%;
+      }
+
+      .w-08 {
+        width: 8%;
+      }
+
+      .w-15 {
+        width: 15%;
+      }
+
+      .w-35 {
+        width: 35%;
+      }
+
+      .page {
+        height: 11in;
+        width: 8.5in;
+
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .bw08 {
+        border-width: .08rem;
+      }
+
+      .unset {
+        box-sizing: unset;
+      }
+
+    </style>
+  </head>
+  <body class="system-sans-serif">
+
+    <div class="page">
+      <!-- Header section -->
+      <div class="fl w-100 overflow-auto pb2 bb bw3 times">
+        <div class="fl w-10 mt3">
+            <img src="./dhs-logo.png" alt="DHS Logo" width="72px;">
+        </div>
+
+        <div class="fl w-70 tc">
+            <h1 class="f5 nb2">Employment Eligibility Verification</h1>
+            <h2 class="f5 nb3 pt2">Department of Homeland Security</h2>
+            <p>U.S. Citizenship and Immigration Services</p>
+        </div>
+
+        <div class="fl w-20 tc">
+            <h2 class="f5 b nb1 pb2">USCIS</h2>
+            <h2 class="f5 b nt1 mb0">Form I-9</h2>
+            <span class="f6">OMB No. 1615-0047</span>
+            <br>
+            <span class="f6">Expires 08/31/2019</span>
+        </div>
+      </div>
+
+      <div class="fl w-100 bg-black-30 mt1 ba bw08">
+        <div class="fl w-100">
+          <span class="f5 b">Section 2. Employer or Authorized Representative Review and Verification</span>
+        </div>
+        <div class="fl w-100">
+          <p class="f7 i mt0 mb0">(Employers or their authorized representative must complete and sign Section 2 within 3 business days of the employee's first day of employment. You must physically examine one document from List A OR a combination of one document from List B and one document from List C as listed on the "Lists of Acceptable Documents.")</p>
+        </div>
+      </div>
+
+      <div class="fl w-100 ba bw1 f7">
+        <div class="fl w-25 mt1 mb1 pl1">
+          <span class="b">Employee Info from Section 1</span>
+        </div>
+
+        <div class="fl w-25 bl bw08 pl1">
+          <div class="fl w-100">
+            <span>Last Name <em>(Family Name)</em></span>
+          </div>
+          <div class="fl w-100">
+            <span>{{LastName}}</span>
+          </div>
+        </div>
+
+        <div class="fl w-20 bl bw08 pl1">
+          <div class="fl w-100">
+            <span>First Name <em>(Given Name)</em></span>
+          </div>
+          <div class="fl w-100">
+            <span>{{FirstName}}</span>
+          </div>
+        </div>
+
+        <div class="fl w-05 bl bw08 pl1">
+          <div class="fl w-100">
+            <span>M.I.</span>
+          </div>
+          <div class="fl w-100">
+            A
+          </div>
+        </div>
+
+        <div class="fl w-25 bl bw08 pl1">
+          <div class="fl w-100">
+            <span>Citizenship/Immigration Status</span>
+          </div>
+          <div class="fl w-100">
+            <span>{{Status}}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fl w-100 f6">
+        <div class="fl w-20 tc">
+          <span class="b">List A</span>
+        </div>
+        <div class="fl w-20 tc">
+          <span class="b">OR</span>
+        </div>
+        <div class="fl w-20 tc">
+          <span class="b">List B</span>
+        </div>
+        <div class="fl w-20 tc">
+          <span class="b">AND</span>
+        </div>
+        <div class="fl w-20 tc">
+          <span class="b">List C</span>
+        </div>
+      </div>
+
+      <div class="fl w-100 f7 pt1 pb2">
+        <div class="fl w-40">
+          <span class="b pl1">Identity and Employment Authorization</span>
+        </div>
+        <div class="fl w-40">
+          <span class="b pl5">Identity</span>
+        </div>
+        <div class="fl w-20 tc">
+          <span class="b">Employment Authorization</span>
+        </div>
+      </div>
+
+      <div class="fl w-100 ba bw08 f7">
+        <div class="fl w-30 br bw3 b--black-30">
+          <div class="fl w-100 br bb bw08 pb1">
+            <span class="pl1">Document Title</span>
+            <br>
+            <span class="pl1">{{DocumentTitle}}</span>
+          </div>
+          <div class="fl w-100 br bb bw08 pb1">
+            <span class="pl1">Issuing Authority</span>
+            <br>
+            <span class="pl1">{{IssuingAuthority}}</span>
+          </div>
+          <div class="fl w-100 br bb bw08 pb1">
+            <span class="pl1">Document Number</span>
+            <br>
+            <span class="pl1">{{DocumentNumber}}</span>
+          </div>
+          <div class="fl w-100 br bw08 pb1">
+            <span class="pl1">Expiration Date <em>(if any)(mm/dd/yyyy)</em></span>
+            <br>
+            <span class="pl1">{{ExpirationDate}}</span>
+          </div>
+          <div class="fl w-100 bb bw1"></div>
+          <div class="fl w-100 br bb bw08 pb1">
+            <span class="pl1">Document Title</span>
+            <br>
+            <span class="pl1">{{DocumentTitle}}</span>
+          </div>
+          <div class="fl w-100 br bb bw08 pb1">
+            <span class="pl1">Issuing Authority</span>
+            <br>
+            <span class="pl1">{{IssuingAuthority}}</span>
+          </div>
+          <div class="fl w-100 br bb bw08 pb1">
+            <span class="pl1">Document Number</span>
+            <br>
+            <span class="pl1">{{DocumentNumber}}</span>
+          </div>
+          <div class="fl w-100 br bw08 pb1">
+            <span class="pl1">Expiration Date <em>(if any)(mm/dd/yyyy)</em></span>
+            <br>
+            <span class="pl1">{{ExpirationDate}}</span>
+          </div>
+          <div class="fl w-100 bb bw1"></div>
+          <div class="fl w-100 br bb bw08 pb1">
+            <span class="pl1">Document Title</span>
+            <br>
+            <span class="pl1">{{DocumentTitle}}</span>
+          </div>
+          <div class="fl w-100 br bb bw08 pb1">
+            <span class="pl1">Issuing Authority</span>
+            <br>
+            <span class="pl1">{{IssuingAuthority}}</span>
+          </div>
+          <div class="fl w-100 br bb bw08 pb1">
+            <span class="pl1">Document Number</span>
+            <br>
+            <span class="pl1">{{DocumentNumber}}</span>
+          </div>
+          <div class="fl w-100 br bw08 pb1">
+            <span class="pl1">Expiration Date <em>(if any)(mm/dd/yyyy)</em></span>
+            <br>
+            <span class="pl1">{{ExpirationDate}}</span>
+          </div>
+        </div>
+
+        <div class="fl w-70">
+          <div class="fl w-50">
+            <div class="fl w-90">
+              <div class="fl w-100 bb bw08 pb1">
+                <span class="pl1">Document Title</span>
+                <br>
+                <span class="pl1">{{DocumentTitle}}</span>
+              </div>
+              <div class="fl w-100 bb bw08 pb1">
+                <span class="pl1">Issuing Authority</span>
+                <br>
+                <span class="pl1">{{IssuingAuthority}}</span>
+              </div>
+              <div class="fl w-100 bb bw08 pb1">
+                <span class="pl1">Document Number</span>
+                <br>
+                <span class="pl1">{{DocumentNumber}}</span>
+              </div>
+              <div class="fl w-100 bw08 pb1">
+                <span class="pl1">Expiration Date <em>(if any)(mm/dd/yyyy)</em></span>
+                <br>
+                <span class="pl1">{{ExpirationDate}}</span>
+              </div>
+            </div>
+            <div class="fl w-100 bb bw1"></div>
+          </div>
+          <div class="fl w-50">
+            <div class="fl w-100 bb bw08 pb1">
+              <span class="pl1">Document Title</span>
+              <br>
+              <span class="pl1">{{DocumentTitle}}</span>
+            </div>
+            <div class="fl w-100 bb bw08 pb1">
+              <span class="pl1">Issuing Authority</span>
+              <br>
+              <span class="pl1">{{IssuingAuthority}}</span>
+            </div>
+            <div class="fl w-100 bb bw08 pb1">
+              <span class="pl1">Document Number</span>
+              <br>
+              <span class="pl1">{{DocumentNumber}}</span>
+            </div>
+            <div class="fl w-100 bw08 pb1">
+              <span class="pl1">Expiration Date <em>(if any)(mm/dd/yyyy)</em></span>
+              <br>
+              <span class="pl1">{{ExpirationDate}}</span>
+            </div>
+            <div class="fl w-100 bb bw1"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fl w-100 f7 pt2">
+        <span class="b">Certification: I attest, under penalty of perjury, that (1) I have examined the document(s) presented by the above-named employee, (2) the above-listed document(s) appear to be genuine and to relate to the employee named, and (3) to the best of my knowledge the employee is authorized to work in the United States.</span>
+      </div>
+
+      <div class="fl w-100 f7 pt1">
+        <span class="b pr2">The employee's first day of employment <em>(mm/dd/yyyy)</em>:</span>
+        <span class="bb bw08">00/00/000</span>
+        <span class="b i pl2">(See instructions for exemptions)</span>
+      </div>
+
+      <div class="fl w-100 ba bw08 mt1">
+        <div class="fl w-100">
+          <div class="fl w-40 br bw08 pl2">
+            <div class="fl w-100 ">
+                <span class="f7">Signature of Preparer or Translator</span>
+            </div>
+            <div class="fl w-100">
+              <span class="f7 ww">{{PreparerSignature}}</span>
+            </div>
+          </div>
+
+          <div class="fl w-20 br bw08 pl2">
+            <div class="fl w-100 ">
+              <span class="f7">Today's Date <em>(mm/dd/yyyy)</em></span>
+            </div>
+            <div class="fl w-100">
+              <span class="f7 ww">{{TodaysDate}}</span>
+            </div>
+          </div>
+
+          <div class="fl w-40 bw08 pl2">
+            <div class="fl w-100 ">
+              <span class="f7">Title of Employer or Authorized Representative</span>
+            </div>
+            <div class="fl w-100">
+              <span class="f7 ww">{{RepresentativeTitle}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fl w-100 bt bw08 f7">
+          <div class="fl w-35 br bw08 pl2 pt1">
+            <div class="fl w-100" style="word-spacing: -2px;">
+              <span>Last Name of Employer or Authorized Representative</span>
+            </div>
+            <div class="fl w-100">
+              <span>{{EmployerLastName}}</span>
+            </div>
+          </div>
+
+          <div class="fl w-35 br bw08 pl2 pt1">
+            <div class="fl w-100" style="word-spacing: -2px;">
+              <span>First Name of Employer or Authorized Representative</span>
+            </div>
+            <div class="fl w-100">
+              <span>{{EmployerFirstName}}</span>
+            </div>
+          </div>
+
+          <div class="fl w-30 bw08 pl2 pt1">
+            <div class="fl w-100" style="word-spacing: -2px;">
+              <span>Employer's Business or Organization Name</span>
+            </div>
+            <div class="fl w-100">
+              <span>{{EmployerBusinessName}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fl w-100 bt bw08 f7">
+
+            <div class="fl w-50 br bw08 pl2 pt1">
+              <div class="fl w-100 ">
+                <span class="ww">Employer's Business or Organization Address (Street Number and Name)</span>
+              </div>
+              <div class="fl w-100">
+                <span class="ww">{{EmployerAddress}}</span>
+              </div>
+            </div>
+
+            <div class="fl w-25 br bw08 pl2 pt1">
+              <div class="fl w-100 ">
+                <span class="ww">City or Town</span>
+              </div>
+              <div class="fl w-100">
+                <span class="ww">{{EmployerCity}}</span>
+              </div>
+            </div>
+
+            <div class="fl w-10 br bw08 pl2 pt1">
+              <div class="fl w-100 ">
+                <span class="ww">State</span>
+              </div>
+              <div class="fl w-100">
+                <span class="ww">{{State}}</span>
+              </div>
+            </div>
+
+            <div class="fl w-15 pl2 pt1">
+              <div class="fl w-100 ">
+                <span class="ww">Zip Code</span>
+              </div>
+              <div class="fl w-100">
+                <span class="ww">{{ZipCode}}</span>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="fl w-100 mt1 ba bw08 f7">
+        <div class="fl w-100 bg-black-20 bb bw08">
+          <span class="f5 b">Section 3. Reverification and Rehires </span>
+          <span class="f6 i">(To be completed and signed by employer or authorized representative.)</span>
+        </div>
+        <div class="fl w-100 bg-black-10 bb bw08">
+          <div class="fl w-70">
+            <span><strong>A.</strong> New Name <em>(if applicable)</em></span>
+          </div>
+          <div class="fl w-30 bl bw08">
+            <span><strong>B.</strong> Date of Rehire <em>(if applicable)</em></span>
+          </div>
+        </div>
+        <div class="fl w-100">
+          <div class="fl w-70">
+            <div class="fl w-40 br bw08 pl1">
+              <span>Last Name <em>(Family Name)</em></span>
+              <br>
+              <span>{{LastName}}</span>
+            </div>
+            <div class="fl w-40 br bw08 pl1">
+              <span>First Name <em>(Given Name)</em></span>
+              <br>
+              <span>{{FirstName}}</span>
+            </div>
+            <div class="fl w-20 pl1">
+              <span>Middle Initial</span>
+              <br>
+              <span>A</span>
+            </div>
+          </div>
+          <div class="fl w-30 bl bw08">
+            <div class="fl w-100">
+              <span>Date <em>(mm/dd/yyyy)</em></span>
+              <br>
+              <span>{{Date}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fl w-100 ba bw08 mt1 f7">
+        <div class="fl w-100 bb bw08 bg-black-10">
+          <span><strong>C.</strong> If the employee's previous grant of employment authorization has expired, provide the information for the document or receipt that establishes continuing employment authorization in the space provided below.</span>
+        </div>
+        <div class="fl w-100">
+          <div class="fl w-35 br bw08">
+            <span>Document Title</span>
+            <br>
+            <span>{{DocumentTitle}}</span>
+          </div>
+          <div class="fl w-35 br br08">
+            <span>Document Number</span>
+            <br>
+            <span>{{DocumentNumber}}</span>
+          </div>
+          <div class="fl w-30">
+            <span>Expiration Date <em>(if any)(mm/dd/yyy)</em></span>
+            <br>
+            <span>{{ExpirationDate}}</span>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
