@@ -48,21 +48,21 @@
       <!-- Header section -->
       <div class="fl w-100 overflow-auto pb2 bb bw3 times">
         <div class="fl w-10 mt3">
-            <img src="./dhs-logo.png" alt="DHS Logo" width="72px;">
+          <img src="./dhs-logo.png" alt="DHS Logo" width="72px;">
         </div>
 
         <div class="fl w-70 tc">
-            <h1 class="f5 nb2">Employment Eligibility Verification</h1>
-            <h2 class="f5 nb3 pt2">Department of Homeland Security</h2>
-            <p>U.S. Citizenship and Immigration Services</p>
+          <h1 class="f4 nb2">Employment Eligibility Verification</h1>
+          <h2 class="f5 nb3">Department of Homeland Security</h2>
+          <p>U.S. Citizenship and Immigration Services</p>
         </div>
 
         <div class="fl w-20 tc">
-            <h2 class="f5 b nb1 pb2">USCIS</h2>
-            <h2 class="f5 b nt1 mb0">Form I-9</h2>
-            <span class="f6">OMB No. 1615-0047</span>
-            <br>
-            <span class="f6">Expires 08/31/2019</span>
+          <h2 class="f5 b nb1 pb2">USCIS</h2>
+          <h2 class="f5 b nt1 mb0">Form I-9</h2>
+          <span class="f6">OMB No. 1615-0047</span>
+          <br>
+          <span class="f6">Expires 08/31/2019</span>
         </div>
       </div>
 
@@ -262,6 +262,19 @@
             </div>
             <div class="fl w-100 bb bw1"></div>
           </div>
+          <div class="fl w-100">
+            <div class="fl w-60">
+              <div class="ba bw08 mt3 ml2 mr2 mb1" style="height: 225px;">
+                <span class="pl1 mt2">Additional Information</span>
+              </div>
+            </div>
+            <div class="fl w-40 tc">
+              <div class="ba bw08 mt3 ml2 mr2 mb1" style="height: 150px;">
+                <span>QR Code - Sections 2 & 3</span>
+                <span>Do Not Write In This Space</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -436,6 +449,28 @@
             <br>
             <span>{{ExpirationDate}}</span>
           </div>
+        </div>
+      </div>
+
+      <div class="fl w-100 mt1">
+        <span class="b f7">I attest, under penalty of perjury, that to the best of my knowledge, this employee is authorized to work in the United States, and if the employee presented document(s), the document(s) I have examined appear to be genuine and to relate to the individual.</span>
+      </div>
+
+      <div class="fl w-100 mt1 ba bw08 f7">
+        <div class="fl w-40 br">
+          <span>Signature of Employer or Authorized Representative</span>
+          <br>
+          <span>{{Signature}}</span>
+        </div>
+        <div class="fl w-20 br">
+          <span>Today's Date <em>(mm/dd/yyyy)</em></span>
+          <br>
+          <span>{{TodaysDate}}</span>
+        </div>
+        <div class="fl w-40">
+          <span>Name of Employer or Authorized Representative</span>
+          <br>
+          <span>{{EmployerName}}</span>
         </div>
       </div>
   </body>

@@ -36,25 +36,29 @@
         box-sizing: unset;
       }
 
+      .box-height {
+        min-height: 45px;
+      }
+
     </style>
   </head>
   <body class="system-sans-serif">
 
     <div class="page">
       <!-- Header section -->
-      <div class="fl w-100 overflow-auto pb2 bb bw3 times">
+      <div class="fl w-100 overflow-auto pb0 bb bw3 times">
         <div class="fl w-10 mt3">
-            <img src="./dhs-logo.png" alt="DHS Logo" width="72px;">
+            <img src="./dhs-logo.png" alt="DHS Logo" width="75px;">
         </div>
 
-        <div class="fl w-70 tc">
-            <h1 class="f4 nb2">Employment Eligibility Verification</h1>
+        <div class="fl w-70 tc mt2">
+            <h2 class="nb2" style="font-size: 1.1rem;">Employment Eligibility Verification</h1>
             <h2 class="f5 nb3">Department of Homeland Security</h2>
-            <p>U.S. Citizenship and Immigration Services</p>
+            <p class="mb1">U.S. Citizenship and Immigration Services</p>
         </div>
 
         <div class="fl w-20 tc">
-            <h2 class="f5 b nb1 pb2">USCIS</h2>
+            <h2 class="f5 b nb1 pb1">USCIS</h2>
             <h2 class="f5 b nt1 mb0">Form I-9</h2>
             <span class="f6">OMB No. 1615-0047</span>
             <br>
@@ -63,28 +67,29 @@
       </div>
 
       <!-- Start here notice -->
-      <div class="fl w-100 overflow-auto mt1 bt pt2">
+      <div class="fl w-100 overflow-auto mt1 mb1 bt pt2">
         <div class="fl mb2">
-            <span><img src="./right-facing-triangle.png" alt="" width="17px;"></span>
-            <span class="b f6">START HERE:</span>
+            <img src="./right-facing-triangle.png" alt="" width="17px;" style="vertical-align: middle;">
+            <span class="b f7">START HERE:</span>
             <span class="b f7">Read instructions carefully before completing this form. The instructions must be available, either in paper or electronically, during completion of this form. Employers are liable for errors in the completion of this form.</span>
         </div>
 
-        <p class="f6">
-          <strong>ANTI-DISCRIMINATION NOTICE:</strong> It is illegal to discriminate against work-authorized individuals. Employers <strong>CANNOT</strong> specify which document(s) an employee may present to establish employment authorization and identity. The refusal to hire or continue to employ an individual because the documentation presented has a future expiration date may also constitute illegal discrimination.</p>
+        <span class="f7 mb1">
+          <strong>ANTI-DISCRIMINATION NOTICE:</strong> It is illegal to discriminate against work-authorized individuals. Employers <strong>CANNOT</strong> specify which document(s) an employee may present to establish employment authorization and identity. The refusal to hire or continue to employ an individual because the documentation presented has a future expiration date may also constitute illegal discrimination.
+        </span>
       </div>
 
 
       <!-- Section 1 Start -->
       <div class="fl w-100 overflow-hidden ba bw08 mt0 f7">
 
-        <div class="fl w-100 bg-black-20 pr2 pb2 bb bw08">
+        <div class="fl w-100 bg-black-30 pr2 pb1 bb bw08">
           <span class="b f5">Section 1. Employee Information and Attestation</span>
           <span class="f6 i"> (Employees must complete and sign Section 1 of Form I-9 no later than the <strong>first day of employment</strong>, but not before accepting a job offer.)</span>
         </div>
 
         <div class="fl w-100">
-          <div class="fl w-30 br bw08 pl2 pt1">
+          <div class="fl w-30 br bw08 pl2 pt1 box-height">
             <div class="fl w-100 ">
                 <span>Last Name <em>(Family Name)</em></span>
             </div>
@@ -93,7 +98,7 @@
             </div>
           </div>
 
-          <div class="fl w-30 br bw08 pl2 pt1">
+          <div class="fl w-30 br bw08 pl2 pt1 box-height">
             <div class="fl w-100 ">
               <span>First Name <em>(Given Name)</em></span>
             </div>
@@ -102,7 +107,7 @@
               </div>
           </div>
 
-          <div class="fl w-10 br bw08 pl2 pt1">
+          <div class="fl w-10 br bw08 pl2 pt1 box-height">
               <div class="fl w-100 ">
                 <span class="ww">Middle Initial</span>
               </div>
@@ -111,7 +116,7 @@
               </div>
           </div>
 
-          <div class="fl w-30 pl2 pt1">
+          <div class="fl w-30 pl2 pt1 box-height">
               <div class="fl w-100 ">
                   <span class="ww">Other Names Used <em>(if any)</em></span>
                 </div>
@@ -123,7 +128,7 @@
 
         <div class="fl w-100 bt bw08">
 
-            <div class="fl w-35 br bw08 pl2 pt1">
+            <div class="fl w-35 br bw08 pl2 pt1 box-height">
                 <div class="fl w-100 ">
                     <span class="ww">Address <em>(Street Number and Name)</em></span>
                   </div>
@@ -132,7 +137,7 @@
                   </div>
             </div>
 
-            <div class="fl w-15 br bw08 pl2 pt1">
+            <div class="fl w-15 br bw08 pl2 pt1 box-height">
                 <div class="fl w-100 ">
                   <span class="ww">Apt. Number</span>
                 </div>
@@ -141,7 +146,7 @@
                 </div>
             </div>
 
-            <div class="fl w-25 br bw08 pl2 pt1">
+            <div class="fl w-25 br bw08 pl2 pt1 box-height">
                 <div class="fl w-100 ">
                   <span class="ww">City or Town</span>
                 </div>
@@ -150,7 +155,7 @@
                 </div>
             </div>
 
-            <div class="fl w-10 br bw08 pl2 pt1">
+            <div class="fl w-10 br bw08 pl2 pt1 box-height">
                 <div class="fl w-100 ">
                   <span class="ww">State</span>
                 </div>
@@ -159,7 +164,7 @@
                 </div>
             </div>
 
-            <div class="fl w-15 pl2 pt1">
+            <div class="fl w-15 pl2 pt1 box-height">
                 <div class="fl w-100 ">
                   <span class="ww">Zip Code</span>
                 </div>
@@ -171,7 +176,7 @@
         </div>
 
         <div class="fl w-100 bt bw08">
-            <div class="fl w-25 br bw08 pl2 pt1">
+            <div class="fl w-25 br bw08 pl2 pt1 box-height">
                 <div class="fl w-100 ">
                   <span class="ww">Date of Birth <em>(mm/dd/yyyy)</em></span>
                 </div>
@@ -180,7 +185,7 @@
                 </div>
             </div>
 
-            <div class="fl w-25 bw08 pl2 pt1">
+            <div class="fl w-25 bw08 pl2 pt1 box-height">
                 <div class="fl w-100 ">
                   <span class="ww">U.S. Social Security Number</span>
                 </div>
@@ -203,7 +208,7 @@
                 </div>
             </div>
 
-            <div class="fl w-25 bl br bw08 pl2 pt1">
+            <div class="fl w-25 bl br bw08 pl2 pt1 box-height">
                 <div class="fl w-100 ">
                   <span class="ww">Employee's E-mail Address</span>
                 </div>
@@ -212,7 +217,7 @@
                 </div>
             </div>
 
-            <div class="fl w-25 pl2 pt1">
+            <div class="fl w-25 pl2 pt1 box-height">
                 <div class="fl w-100 ">
                   <span class="ww">Employee's Telephone Number</span>
                 </div>
@@ -223,7 +228,7 @@
         </div>
       </div>
 
-      <div class="fl w-100 f6">
+      <div class="fl w-100 f7">
         <p class="b mb1 mt2">I am aware that federal law provides for imprisonment and/or fines for false statements or use of false documents in connection with the completion of this form.</p>
         <p class="b mb1 mt0">I attest, under penalty of perjury, that I am (check one of the following boxes):</p>
       </div>
@@ -271,17 +276,17 @@
               <span class="pl3"><strong>1.</strong> Alien Registration Number/USCIS Number:</span>
               <span class="fr pl4 bb bw08">{{AlienNumber}}</span>
               <br>
-              <span class="f5 b pl6">OR</span>
+              <span class="f6 b pl6">OR</span>
             </div>
 
             <div class="fl w-80 pb1">
               <span class="pl3"><strong>2.</strong>  Form I-94 Admission Number:</span>
               <span class="fr pl4 bb bw08">{{I94Number}}</span>
               <br>
-              <span class="f5 b pl6">OR</span>
+              <span class="f6 b pl6">OR</span>
             </div>
 
-            <div class="fl w-80 pt3">
+            <div class="fl w-80 pt1">
               <span class="pl3"><strong>3.</strong> Foreign Passport Number:</span>
               <span class="fr pl4 bb bw08">{{PassportNumber}}</span>
             </div>
