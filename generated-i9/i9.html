@@ -20,6 +20,10 @@
         width: 35%;
       }
 
+      .w-55 {
+        width: 55%;
+      }
+
       .page {
         height: 11in;
         width: 8.5in;
@@ -48,7 +52,7 @@
       <!-- Header section -->
       <div class="fl w-100 overflow-auto pb0 bb bw3 times">
         <div class="fl w-10 mt3">
-            <img src="./dhs-logo.png" alt="DHS Logo" width="75px;">
+            <img src="./dhs-logo.png" alt="DHS Logo" width="72px;">
         </div>
 
         <div class="fl w-70 tc mt2">
@@ -74,9 +78,9 @@
             <span class="b f7">Read instructions carefully before completing this form. The instructions must be available, either in paper or electronically, during completion of this form. Employers are liable for errors in the completion of this form.</span>
         </div>
 
-        <span class="f7 mb1">
+        <p class="f7 mb1 lh-solid">
           <strong>ANTI-DISCRIMINATION NOTICE:</strong> It is illegal to discriminate against work-authorized individuals. Employers <strong>CANNOT</strong> specify which document(s) an employee may present to establish employment authorization and identity. The refusal to hire or continue to employ an individual because the documentation presented has a future expiration date may also constitute illegal discrimination.
-        </span>
+        </p>
       </div>
 
 
@@ -89,38 +93,38 @@
         </div>
 
         <div class="fl w-100">
-          <div class="fl w-30 br bw08 pl2 pt1 box-height">
+          <div class="fl w-30 br bw08 pl2 pt1 box-height relative">
             <div class="fl w-100 ">
-                <span>Last Name <em>(Family Name)</em></span>
+              <span>Last Name <em>(Family Name)</em></span>
             </div>
-            <div class="fl w-100">
+            <div class="fl w-100 pb1 absolute bottom-0">
               <span>{{LastName}}</span>
             </div>
           </div>
 
-          <div class="fl w-30 br bw08 pl2 pt1 box-height">
+          <div class="fl w-30 br bw08 pl2 pt1 box-height relative">
             <div class="fl w-100 ">
               <span>First Name <em>(Given Name)</em></span>
             </div>
-            <div class="fl w-100">
+            <div class="fl w-100 pb1 absolute bottom-0">
                 <span class="ww">{{FirstName}}</span>
               </div>
           </div>
 
-          <div class="fl w-10 br bw08 pl2 pt1 box-height">
+          <div class="fl w-10 br bw08 pl2 pt1 box-height relative">
               <div class="fl w-100 ">
                 <span class="ww">Middle Initial</span>
               </div>
-              <div class="fl w-100">
+              <div class="fl w-100 pb1 absolute bottom-0">
                 <span class="ww">A</span>
               </div>
           </div>
 
-          <div class="fl w-30 pl2 pt1 box-height">
+          <div class="fl w-30 pl2 pt1 box-height relative">
               <div class="fl w-100 ">
                   <span class="ww">Other Names Used <em>(if any)</em></span>
                 </div>
-                <div class="fl w-100">
+                <div class="fl w-100 pb1 absolute bottom-0">
                   <span class="ww">{{OtherNamesUsed}}</span>
                 </div>
           </div>
@@ -128,47 +132,47 @@
 
         <div class="fl w-100 bt bw08">
 
-            <div class="fl w-35 br bw08 pl2 pt1 box-height">
+            <div class="fl w-35 br bw08 pl2 pt1 box-height relative">
                 <div class="fl w-100 ">
                     <span class="ww">Address <em>(Street Number and Name)</em></span>
                   </div>
-                  <div class="fl w-100">
+                  <div class="fl w-100 pb1 absolute bottom-0">
                     <span class="ww">{{Address}}</span>
                   </div>
             </div>
 
-            <div class="fl w-15 br bw08 pl2 pt1 box-height">
-                <div class="fl w-100 ">
+            <div class="fl w-15 br bw08 pl2 pt1 box-height relative">
+                <div class="fl w-100">
                   <span class="ww">Apt. Number</span>
                 </div>
-                <div class="fl w-100">
+                <div class="fl w-100 pb1 absolute bottom-0">
                   <span class="ww">{{AptNumber}}</span>
                 </div>
             </div>
 
-            <div class="fl w-25 br bw08 pl2 pt1 box-height">
+            <div class="fl w-25 br bw08 pl2 pt1 box-height relative">
                 <div class="fl w-100 ">
                   <span class="ww">City or Town</span>
                 </div>
-                <div class="fl w-100">
+                <div class="fl w-100 pb1 absolute bottom-0">
                   <span class="ww">{{City}}</span>
                 </div>
             </div>
 
-            <div class="fl w-10 br bw08 pl2 pt1 box-height">
+            <div class="fl w-10 br bw08 pl2 pt1 box-height relative">
                 <div class="fl w-100 ">
                   <span class="ww">State</span>
                 </div>
-                <div class="fl w-100">
+                <div class="fl w-100 pb1 absolute bottom-0">
                   <span class="ww">{{State}}</span>
                 </div>
             </div>
 
-            <div class="fl w-15 pl2 pt1 box-height">
+            <div class="fl w-15 pl2 pt1 box-height relative">
                 <div class="fl w-100 ">
                   <span class="ww">Zip Code</span>
                 </div>
-                <div class="fl w-100">
+                <div class="fl w-100 pb1 absolute bottom-0">
                   <span class="ww">{{ZipCode}}</span>
                 </div>
             </div>
@@ -176,52 +180,52 @@
         </div>
 
         <div class="fl w-100 bt bw08">
-            <div class="fl w-25 br bw08 pl2 pt1 box-height">
+            <div class="fl w-25 br bw08 pl2 pt1 box-height relative">
                 <div class="fl w-100 ">
                   <span class="ww">Date of Birth <em>(mm/dd/yyyy)</em></span>
                 </div>
-                <div class="fl w-100 pb1">
+                <div class="fl w-100 pb1 absolute bottom-0">
                   <span class="ww">{{DateOfBirth}}</span>
                 </div>
             </div>
 
-            <div class="fl w-25 bw08 pl2 pt1 box-height">
-                <div class="fl w-100 ">
+            <div class="fl w-25 bw08 pl2 pt1 box-height relative">
+                <div class="fl w-100">
                   <span class="ww">U.S. Social Security Number</span>
                 </div>
-                <div class="fl w-100 tc">
-                  <div class="fl w-08 ba bw08">1</div>
-                  <div class="fl w-08 bt bb bw08">2</div>
-                  <div class="fl w-08 ba bw08">3</div>
+                <div class="fl w-100 tc absolute bottom-0 pb1">
+                  <div class="fl w-08 ba bw08 pt1" style="height: 23px;">1</div>
+                  <div class="fl w-08 bt bb bw08 pt1" style="height: 23px;">2</div>
+                  <div class="fl w-08 ba bw08 pt1" style="height: 23px;">3</div>
 
-                  <div class="fl ml1 mr1">-</div>
+                  <div class="fl ml1 mr1 pt1">-</div>
 
-                  <div class="fl w-08 ba bw08">4</div>
-                  <div class="fl w-08 bt bb br bw08">5</div>
+                  <div class="fl w-08 ba bw08 pt1" style="height: 23px;">4</div>
+                  <div class="fl w-08 bt bb br bw08 pt1" style="height: 23px;">5</div>
 
-                  <div class="fl ml1 mr1">-</div>
+                  <div class="fl ml1 mr1 pt1">-</div>
 
-                  <div class="fl w-08 ba bw08">6</div>
-                  <div class="fl w-08 bt bb br bw08">7</div>
-                  <div class="fl w-08 bt bb bw08">8</div>
-                  <div class="fl w-08 ba bw08">9</div>
+                  <div class="fl w-08 ba bw08 pt1" style="height: 23px;">6</div>
+                  <div class="fl w-08 bt bb br bw08 pt1" style="height: 23px;">7</div>
+                  <div class="fl w-08 bt bb bw08 pt1" style="height: 23px;">8</div>
+                  <div class="fl w-08 ba bw08 pt1" style="height: 23px;">9</div>
                 </div>
             </div>
 
-            <div class="fl w-25 bl br bw08 pl2 pt1 box-height">
-                <div class="fl w-100 ">
+            <div class="fl w-25 bl br bw08 pl2 pt1 box-height relative">
+                <div class="fl w-100">
                   <span class="ww">Employee's E-mail Address</span>
                 </div>
-                <div class="fl w-100 pb1">
+                <div class="fl w-100 pb1 absolute bottom-0">
                   <span class="ww">{{EmailAddress}}</span>
                 </div>
             </div>
 
-            <div class="fl w-25 pl2 pt1 box-height">
+            <div class="fl w-25 pl2 pt1 box-height relative">
                 <div class="fl w-100 ">
                   <span class="ww">Employee's Telephone Number</span>
                 </div>
-                <div class="fl w-100 pb1">
+                <div class="fl w-100 pb1 absolute bottom-0">
                   <span class="ww">{{PhoneNumber}}</span>
                 </div>
             </div>
@@ -229,23 +233,23 @@
       </div>
 
       <div class="fl w-100 f7">
-        <p class="b mb1 mt2">I am aware that federal law provides for imprisonment and/or fines for false statements or use of false documents in connection with the completion of this form.</p>
+        <p class="b mb1 mt2 lh-solid">I am aware that federal law provides for imprisonment and/or fines for false statements or use of false documents in connection with the completion of this form.</p>
         <p class="b mb1 mt0">I attest, under penalty of perjury, that I am (check one of the following boxes):</p>
       </div>
 
       <div class="fl w-100 ba bw08 mt0 f7">
         <div class="fl w-100 bb bw08 pt1 pb1">
-          <input class="ml1 mr1" type="checkbox" disabled>
+          <input class="ml1 mr1" type="checkbox">
           <span>1. A citizen of the United States</span>
         </div>
 
         <div class="fl w-100 bb bw08 pt1 pb1">
-          <input class="ml1 mr1" type="checkbox" disabled>
+          <input class="ml1 mr1" type="checkbox">
           <span>2. A noncitizen national of the United States <em>(See instructions)</em></span>
         </div>
 
           <div class="fl w-100 pt1 pb1">
-            <input class="ml1 mr1" type="checkbox" disabled>
+            <input class="ml1 mr1" type="checkbox">
             <span class="mr2">3. A lawful permanent resident</span>
             <span>(Alien Registration Number/USCIS Number):</span>
             <span class="bb mb1">{{AlienNumber}}</span>
@@ -255,7 +259,7 @@
       <div class="fl w-100 f7">
         <div class="fl w-75 bb br bl bw08">
             <div class="fl w-100 mb1 pt1">
-              <input class="ml1 mr1" type="checkbox" disabled>
+              <input class="ml1 mr1" type="checkbox">
               <span>4. An alien authorized to work until (expiration date, if applicable, mm/dd/yyyy):</span>
               <span class="ml3 mb1 bb bw08">00/00/0000</span>
             </div>
@@ -273,32 +277,41 @@
             </div>
 
             <div class="fl w-80 pt3 pb1">
-              <span class="pl3"><strong>1.</strong> Alien Registration Number/USCIS Number:</span>
-              <span class="fr pl4 bb bw08">{{AlienNumber}}</span>
-              <br>
-              <span class="f6 b pl6">OR</span>
+              <div class="fl w-100">
+                <span class="pl3"><strong>1.</strong> Alien Registration Number/USCIS Number:</span>
+                <span class="fr w-35 pl4 bb bw08">{{AlienNumber}}</span>
+                <br>
+                <span class="f6 b pl6">OR</span>
+              </div>
             </div>
 
             <div class="fl w-80 pb1">
-              <span class="pl3"><strong>2.</strong>  Form I-94 Admission Number:</span>
-              <span class="fr pl4 bb bw08">{{I94Number}}</span>
-              <br>
-              <span class="f6 b pl6">OR</span>
+              <div class="fl w-100">
+                <span class="pl3"><strong>2.</strong>  Form I-94 Admission Number:</span>
+                <span class="fr w-50 pl4 bb bw08">{{I94Number}}</span>
+                <br>
+                <span class="f6 b pl6">OR</span>
+              </div>
+
             </div>
 
             <div class="fl w-80 pt1">
-              <span class="pl3"><strong>3.</strong> Foreign Passport Number:</span>
-              <span class="fr pl4 bb bw08">{{PassportNumber}}</span>
+              <div class="fl w-100">
+                <span class="pl3"><strong>3.</strong> Foreign Passport Number:</span>
+                <span class="fr w-55 pl4 bb bw08">{{PassportNumber}}</span>
+              </div>
             </div>
 
             <div class="fl w-80 pt3 pb3">
-              <span class="pl4">Country of Issuance</span>
-              <span class="fr pl4 bb bw08">{{CountryOfIssuance}}</span>
+              <div class="fl w-100">
+                <span class="pl4">Country of Issuance</span>
+                <span class="fr w-60 pl4 bb bw08">{{CountryOfIssuance}}</span>
+              </div>
             </div>
 
         </div>
 
-        <div class="fr w-20 ba bw08 ml3 mt4 tc unset" style="height: 193px;">
+        <div class="fr ba bw08 mt4 tc" style="height: 183.8px; width: 183.8px;">
           <span>QR Code - Section 1</span>
           <br>
           <span>Do Not Write In This Space</span>
@@ -306,21 +319,21 @@
       </div>
 
       <!-- Signature Section -->
-      <div class="fl w-100 ba bw08 mt2 f7">
-        <div class="fl w-70 br bw08">
-          <div class="fl w-100">
+      <div class="fl w-100 ba bw08 mt2 f7 relative">
+        <div class="fl w-70 pl1">
+          <div class="fl w-100 pt1">
               <span>Signature of Employee</span>
           </div>
-          <div class="fl w-100 pt2">
+          <div class="fl w-100absolute bottom-0">
               <span>{{Signature}}</span>
           </div>
         </div>
 
-        <div class="fl w-30">
-          <div class="fl w-100">
+        <div class="fl w-30 bl bw08 pl1">
+          <div class="fl w-100 pt1">
               <span>Today's Date <em>(mm/dd/yyyy)</em></span>
           </div>
-          <div class="fl w-100 pt2">
+          <div class="fl w-100">
               <span class="pt1">{{SignDate}}</span>
           </div>
         </div>
@@ -334,12 +347,12 @@
 
         <div class="fl w-100 pl2">
           <div class="fl w-30">
-            <input type="checkbox" disabled>
+            <input type="checkbox" >
             <span class="f7">I did not use a preparer or translator.</span>
           </div>
 
           <div class="fl w-70">
-            <input type="checkbox" disabled>
+            <input type="checkbox" >
             <span class="f7">A preparer(s) and/or translator(s) assisted the employee in completing Section 1.</span>
           </div>
         </div>
@@ -351,45 +364,45 @@
       </div>
 
       <div class="fl w-100">
-        <span class="f6 b">I attest, under penalty of perjury, that I have assisted in the completion of Section 1 of this form and that to the best of my knowledge the information is true and correct.</span>
+        <p class="f7 b lh-solid mt0 mb0">I attest, under penalty of perjury, that I have assisted in the completion of Section 1 of this form and that to the best of my knowledge the information is true and correct.</p>
       </div>
 
       <div class="fl w-100 ba bw08">
           <div class="fl w-100">
-            <div class="fl w-70 br bw08 pl2">
-              <div class="fl w-100 ">
+            <div class="fl w-70 br bw08 pl2 box-height relative">
+              <div class="fl w-100">
                   <span class="f7">Signature of Preparer or Translator</span>
               </div>
-              <div class="fl w-100">
+              <div class="fl w-100 absolute bottom-0">
                 <span class="f7 ww">{{PreparerSignature}}</span>
               </div>
             </div>
 
-            <div class="fl w-30 bw08 pl2">
+            <div class="fl w-30 bw08 pl2 box-height relative">
               <div class="fl w-100 ">
                 <span class="f7">Today's Date <em>(mm/dd/yyyy)</em></span>
               </div>
-              <div class="fl w-100">
+              <div class="fl w-100 absolute bottom-0">
                 <span class="f7 ww">{{TodaysDate}}</span>
               </div>
             </div>
         </div>
 
         <div class="fl w-100 bt bw08 f7">
-          <div class="fl w-60 br bw08 pl2 pt1">
+          <div class="fl w-60 br bw08 pl2 pt1 box-height relative">
             <div class="fl w-100">
               <span>Last Name <em>(Family Name)</em></span>
             </div>
-            <div class="fl w-100">
+            <div class="fl w-100 absolute bottom-0">
               <span>{{PreparerLastName}}</span>
             </div>
           </div>
 
-          <div class="fl w-40 bw08 pl2 pt1">
+          <div class="fl w-40 bw08 pl2 pt1 box-height relative">
             <div class="fl w-100">
               <span>First Name <em>(Given Name)</em></span>
             </div>
-            <div class="fl w-100">
+            <div class="fl w-100 absolute bottom-0">
               <span>{{PreparerFirstName}}</span>
             </div>
           </div>
@@ -397,41 +410,55 @@
 
         <div class="fl w-100 bt bw08 f7">
 
-            <div class="fl w-50 br bw08 pl2 pt1">
+            <div class="fl w-50 br bw08 pl2 pt1 box-height relative">
               <div class="fl w-100 ">
                 <span class="ww">Address <em>(Street Number and Name)</em></span>
               </div>
-              <div class="fl w-100">
+              <div class="fl w-100 absolute bottom-0">
                 <span class="ww">{{PreparerAddress}}</span>
               </div>
             </div>
 
-            <div class="fl w-25 br bw08 pl2 pt1">
+            <div class="fl w-25 br bw08 pl2 pt1 box-height relative">
               <div class="fl w-100 ">
                 <span class="ww">City or Town</span>
               </div>
-              <div class="fl w-100">
+              <div class="fl w-100 absolute bottom-0">
                 <span class="ww">{{PreparerCity}}</span>
               </div>
             </div>
 
-            <div class="fl w-10 br bw08 pl2 pt1">
+            <div class="fl w-10 br bw08 pl2 pt1 box-height relative">
               <div class="fl w-100 ">
                 <span class="ww">State</span>
               </div>
-              <div class="fl w-100">
+              <div class="fl w-100 absolute bottom-0">
                 <span class="ww">{{State}}</span>
               </div>
             </div>
 
-            <div class="fl w-15 pl2 pt1">
+            <div class="fl w-15 pl2 pt1 box-height relative">
               <div class="fl w-100 ">
                 <span class="ww">Zip Code</span>
               </div>
-              <div class="fl w-100">
+              <div class="fl w-100 absolute bottom-0">
                 <span class="ww">{{ZipCode}}</span>
               </div>
             </div>
+        </div>
+      </div>
+
+      <div class="fl w-100 mt4">
+        <div class="fl w-100 f6 tc bb bw08">
+          <span>
+            <img src="./stop-sign.gif" alt="Stop Page Here" height="24px;" style="vertical-align: middle">
+            <span class="i pl2 pr2 bg-black-20">Employer Completes Next Page</span>
+            <img src="./stop-sign.gif" alt="Stop Page Here" height="24px;" style="vertical-align: middle">
+          </span>
+        </div>
+        <div class="fl w-100 f7">
+          <span class="fl">Form I-9 07/17/17 N</span>
+          <span class="fr">Page 1 of 3</span>
         </div>
       </div>
     </div>
